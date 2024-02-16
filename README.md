@@ -11,7 +11,8 @@ Welcome to my GitHub repository! This repository is dedicated to storing all the
 
 ## Technologies
 
-- **Day 1**: HTML, CSS. [Reference](https://medium.com/@davifsroberto/5-microfrontend-pratices-84d843958754)
+- **Day 1**: HTML (main), CSS. [Reference](https://medium.com/@davifsroberto/5-microfrontend-pratices-84d843958754)
+- **Day 2**: HTML, CSS (main), SASS. [Reference](https://www.nature.com/nature/volumes/626/issues/7999)
 
 
 ## Requirements
