@@ -1,19 +1,9 @@
-/* STYLE RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* VARIABLES */
-:root {
-  --color-text-main: #fff;
-  --color-text-secondary: #f7d72b;
-  --shadow-text: 0 10px 20px rgba(0, 0, 0, 1);
-  --margin-sections: 20rem;
-}
-
-/* GLOBAL STYLES */
 body {
   display: flex;
   justify-content: center;
@@ -21,92 +11,73 @@ body {
   font-family: "Harding Text Web Regular Regular";
 }
 
-/* ARTICLE */
 .magazine {
   width: 80vw;
-  margin: 5rem auto; /* Centrado horizontal con margen automático */
+  margin: 5rem auto;
   background-image: url(../images/rainy-forest.jpg);
   background-size: cover;
   background-position: center;
-  box-shadow: var(--shadow-text);
+  box-shadow: 0 10px 20px rgb(0, 0, 0);
   border-radius: 10px;
 }
-
-/* ARTICLE HEADER */
 .magazine__header {
   padding: 4rem 5rem;
-  text-shadow: var(--shadow-text);
+  text-shadow: 0 10px 20px rgb(0, 0, 0);
 }
-
 .magazine__title {
   font-size: 15vw;
   line-height: 0.8;
-  color: var(--color-text-main);
+  color: #fff;
 }
-
 .magazine__subtitle {
   font-size: 1.6rem;
-  color: var(--color-text-main);
+  color: #fff;
 }
-
 .magazine__separator {
-  border: 1px solid var(--color-text-main);
-  width: 100%; /* Asegura que el separador tome todo el ancho disponible */
+  border: 1px solid #fff;
+  width: 100%;
 }
-
-/* ARTICLE SECTION MAIN */
 .magazine__content {
-  margin-top: var(--margin-sections);
-  margin-bottom: var(--margin-sections);
+  margin: 20rem 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-
 .magazine__highlight {
   margin-right: 13rem;
   width: 30%;
 }
-
 .magazine__topic {
   font-size: 8rem;
   font-family: "Industrial Gothic W01 Single";
-  color: var(--color-text-secondary);
+  color: #f7d72b;
   text-align: start;
   line-height: 0.9;
 }
-
-.magazine__separator {
-  border: 1px solid var(--color-text-main);
-}
-
 .magazine__summary {
   margin-top: 0.5rem;
-  color: var(--color-text-main);
+  color: #fff;
   font-family: "Harding Text Web Regular Regular";
   text-align: left;
   font-size: 2rem;
   line-height: 1;
 }
-
-/* ARTICLE FOOTER */
 .magazine__footer {
-  color: var(--color-text-main);
+  color: #fff;
   max-height: 5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-top: 1px solid var(--color-text-main);
-  margin: 0 5rem 5rem 5rem;
+  border-top: 1px solid #fff;
+  margin: 0 5rem 5rem;
   gap: 2rem;
 }
-
 .magazine__section {
   width: 20%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding-top: 1rem;
-  text-shadow: var(--shadow-text);
-}
+  text-shadow: 0 10px 20px rgb(0, 0, 0);
+}/*# sourceMappingURL=style.css.map */
