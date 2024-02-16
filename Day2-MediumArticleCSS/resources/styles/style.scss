@@ -1,0 +1,441 @@
+// Mixins
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin font-settings($size, $weight: normal, $style: normal) {
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+}
+
+@mixin link-style($color: #000, $decoration: none) {
+    color: $color;
+    text-decoration: $decoration;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin button-style($color: #2b6d47) {
+    border: none;
+    background: none;
+    color: $color;
+    cursor: pointer;
+
+    &:hover {
+        color: darken($color, 15%);
+    }
+}
+
+// General Style Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+// Body
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+}
+
+// Header
+.header {
+    @include flex-container(row, space-between);
+    border-bottom: 1px solid #e9e9e9;
+    padding: 1rem 3rem;
+}
+
+// Nav
+.nav {
+    @include flex-container(row, space-between);
+    width: 100%;
+}
+
+.nav__container--left {
+    @include flex-container(row);
+}
+
+.nav__logo {
+    width: 100%;
+    height: auto;
+}
+
+.nav__logo-link {
+    @include link-style;
+    width: 8%;
+    margin-right: 1rem;
+}
+
+.nav__search {
+    width: 50%;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: #f9f9f9;
+    font-size: 1.5rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.nav__container--right {
+    @include flex-container(row, flex-start, center, 2rem);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.nav__items {
+    @include flex-container(row, center, center, 2em);
+    list-style: none;
+}
+
+.nav__button {
+    @include flex-container(row);
+}
+
+.nav__icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5em;
+}
+
+.nav__button:hover {
+    cursor: pointer;
+}
+
+.nav__button--profile {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+
+    .nav__icon {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+// Main
+.main {
+    @include flex-container(column, flex-start, center, 2em);
+}
+
+.article {
+    @include flex-container(column);
+    width: 45%;
+    margin-top: 2em;
+    text-align: start;
+
+    hr {
+        width: 100%;
+        border: 1px solid #f4f3f3;
+    }
+}
+
+// Article Header
+.article__header {
+    .article__title {
+        @include font-settings(4rem, bold);
+        color: #000;
+    }
+}
+
+.writer {
+    margin-top: 2em;
+    @include flex-container(row, flex-start, center, 1em);
+    margin-bottom: 2.5em;
+
+    &__image {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+    }
+
+    &__profile-link {
+        @include link-style(#000);
+        font-weight: 500;
+    }
+
+    &__follow-button {
+        @include button-style(#2b6d47);
+        font-weight: 500;
+    }
+
+    &__info {
+        @include flex-container(column);
+        font-size: 1.2em;
+    }
+
+    &__details,
+    &__additional {
+        @include flex-container(row, flex-start, center, 0.5em);
+    }
+
+    &__name {
+        @include link-style;
+    }
+}
+
+.article__toolbar {
+    @include flex-container(row, space-between);
+    border-bottom: 1px solid #f4f3f3;
+    border-top: 1px solid #f4f3f3;
+    padding: 1.5em 2.5em;
+}
+
+.article__button {
+    @include button-style(#2b6d47);
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.article__actions {
+    @include flex-container(row, flex-start, center, 2em);
+}
+
+// Content Sections
+.content__section {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+// First Section Main
+.content__section--first {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+    margin-bottom: 1.5rem;
+}
+
+.content__figure {
+    @include flex-container(column, center, center, 1em);
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.content__image {
+    width: 80%;
+    height: auto;
+}
+
+.content__caption {
+    .content__link {
+        @include font-settings(1.1em, 500);
+        color: #6b6b6b;
+    }
+}
+
+// Second Section Main
+.content__section--second {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__subheading {
+    @include font-settings(2.5rem, bold);
+    color: #000;
+}
+
+.content__paragraph {
+    font-family: "Times New Roman", Times, serif;
+    @include font-settings(1.5em, 300);
+    color: #000;
+    line-height: 3rem;
+}
+
+// Third Section Main
+.content__section--third {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__list {
+    list-style: disc;
+    @include flex-container(column, flex-start, flex-start, 2rem);
+    font-size: 1.9rem;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+}
+
+.content__list-item-span {
+    .content__link {
+        color: #000;
+        font-weight: 200;
+    }
+}
+
+// Fourth Section Main
+.content__section--fourth {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__figure-wrapper {
+    @include flex-container;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 2rem
+}
+
+// Fifth Section Main
+.content__section--fifth {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+// Sixth Section Main
+.content__section--sixth {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__blockquote {
+    font-style: normal;
+    @include font-settings(2.5rem, 300);
+    color: #515151;
+    margin-top: 2rem;
+    padding-left: 3rem;
+}
+
+.content__blockquote-em {
+    font-style: normal;
+    font-weight: 400;
+}
+
+// Seventh Section Main
+.content__section--seventh {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__ordered-list {
+    list-style: decimal;
+    @include flex-container(column, flex-start, flex-start, 2rem);
+    font-size: 1.9rem;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+}
+
+.content__ordered-list {
+    .content__link {
+        color: #000;
+        font-weight: 200;
+    }
+}
+
+.content__video-description {
+    color: #000;
+    font-weight: 200;
+    font-size: 1.9rem;
+}
+
+.content__iframe {
+    width: 100%;
+    height: 40rem;
+}
+
+// Eighth Section Main
+.content__section--eighth {
+    @include flex-container(column);
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.content__dots {
+    @include flex-container;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    font-weight: thin;
+}
+
+.content__final-thoughts {
+    @include font-settings(1.8rem, 400);
+    color: #000;
+    margin-bottom: 3rem;
+}
+
+.content__final-thoughts {
+    .content__link {
+        color: #000;
+        font-weight: 200;
+    }
+}
+
+// Footer Article
+.related-topics {
+    @include flex-container(row, flex-start, center, 1rem);
+    padding: 2em 0;
+    flex-wrap: wrap;
+    text-align: start;
+    font-size: 1.3em;
+}
+
+.related-topics__list {
+    @include flex-container(row);
+    list-style: none;
+}
+
+.related-topics__list {
+    .related-topics__link {
+        color: #000;
+        font-weight: 200;
+        text-decoration: none;
+        padding: 0.9rem;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: 500;
+        background-color: #e8e6e6;
+    }
+}
+
+// Footer Web Page
+.footer {
+    border-top: 1px solid #e9e9e9;
+    @include flex-container(row, center);
+    padding: 2em 0;
+}
+
+.footer__nav {
+    width: 45%;
+    padding: 1em 0;
+    border: none;
+}
+
+.footer__list {
+    @include flex-container(row, space-between);
+    list-style: none;
+}
+
+.footer__list {
+    .footer__link {
+        @include link-style;
+        font-size: 1.3rem;
+        font-weight: 200;
+    }
+}

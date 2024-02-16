@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="lorem ipsum" />
+  <link rel="stylesheet" href="./resources/styles/style.css" />
+  <link rel="shortcut icon" href="./resources/images/medium-logo.png" type="image/x-icon">
+  <title>5 Microfrontend Practices</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav__container--left">
+        <a href="https://medium.com/" target="_blank" aria-label="Medium homepage" class="nav__logo-link">
+          <img src="./resources/images/medium-logo.png" alt="Medium logo" class="nav__logo" />
+        </a>
+        <input type="text" placeholder="Search" aria-label="Search articles" aria-autocomplete="list"
+          class="nav__search" />
+      </div>
+
+      <div class="nav__container--right">
+        <ul aria-label="Additional navigation options" class="nav__items">
+          <li class="nav__item">
+            <div class="nav__button" tabindex="0" role="button" aria-label="Write a new story">
+              <img src="./resources/images/write-icon.png" alt="Write Icon" class="nav__icon" />
+              <p class="nav__text">Write</p>
+            </div>
+          </li>
+          <li class="nav__item">
+            <div class="nav__button" tabindex="0" role="button" aria-label="View notifications">
+              <img src="./resources/images/notification-icon.png" alt="Notifications Icon" class="nav__icon" />
+            </div>
+          </li>
+          <li class="nav__item">
+            <div class="nav__button nav__button--profile" id="containerProfilePhoto" tabindex="0" role="button"
+              aria-label="Access profile" aria-haspopup="true">
+              <img src="./resources/images/user-icon.png" alt="User profile photo" class="nav__icon" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <article class="article">
+      <header class="article__header">
+        <h1 id="articleTitle" class="article__title">5 Microfrontend Practices</h1>
+        <div role="region" aria-label="Writer information" class="writer">
+          <div class="writer__profile">
+            <a href="https://medium.com/@davifsroberto" target="_blank" rel="noopener noreferrer"
+              class="writer__profile-link">
+              <img src="resources/images/writer-icon.png" alt="Profile Photo Writer" id="writerImg"
+                class="writer__image" />
+            </a>
+          </div>
+          <div class="writer__info" role="region">
+            <div role="group" class="writer__details">
+              <a href="https://medium.com/@davifsroberto" target="_blank" rel="noopener noreferrer"
+                class="writer__name">David Roberto</a>
+              <p class="writer__separator">&middot;</p>
+              <button aria-label="Follow David Roberto" class="writer__follow-button">Follow</button>
+            </div>
+            <div role="group" class="writer__additional">
+              <p class="writer__read-time">3 min read</p>
+              <p class="writer__separator">&middot;</p>
+              <p class="writer__date">Feb 21, 2022</p>
+            </div>
+          </div>
+        </div>
+        <div role="toolbar" class="article__toolbar">
+          <div role="group" class="article__likes-comments">
+            <button aria-label="Number of likes" class="article__button">177</button>
+            <button aria-label="Number of comments" class="article__button">1</button>
+          </div>
+          <div role="group" class="article__actions">
+            <button aria-label="Save this article" class="article__button">Save</button>
+            <button aria-label="Listen to the article" class="article__button">Listen</button>
+            <button aria-label="Share this article" class="article__button">Share</button>
+            <button aria-label="Open more options" class="article__button">More</button>
+          </div>
+        </div>
+      </header>
+
+      <section id="mainContentArticle" aria-labelledby="microfrontendPracticesHeading" class="content">
+        <section class="content__section content__section--first"
+          aria-label="Section for welcome message and diagram of microfrontend architecture">
+          <figure class="content__figure">
+            <img src="./resources/images/micro-frontend-1.png" alt="Microfrontend Diagram with Services"
+              class="content__image" />
+            <figcaption class="content__caption">
+              <a href="https://blog.scottlogic.com/" target="_blank" aria-label="Scott Logic Blog"
+                class="content__link">
+                https://blog.scottlogic.com/
+              </a>
+            </figcaption>
+          </figure>
+          <h3 id="microfrontendPracticesHeading" class="content__heading">
+            Hello, I will share some of the many practices used in
+            microfrontends. Go!
+          </h3>
+        </section>
+        <section class="content__section content__section--second" aria-labelledby="microfrontendConceptHeading">
+          <h2 id="microfrontendConceptHeading" class="content__subheading">Microfrontend Concept</h2>
+          <p class="content__paragraph">
+            Micro frontends are a pattern where web application UIs (front
+            ends) are created from semi-autonomous sections that can be worked
+            by various groups utilizing various technologies. Micro-frontend
+            architectures resemble back-end designs where backends are created
+            from semi-independent microservices. Each microfrontend has its
+            own repository, its own package.json document, and its own
+            build-tool configuration. Subsequently, each microfrontend has a
+            free deployment process and an autonomous deploy/CI.
+          </p>
+        </section>
+        <section class="content__section content__section--third" aria-labelledby="singleSpaHeading">
+          <h2 id="singleSpaHeading" class="content__subheading">Single-SPA</h2>
+          <p class="content__paragraph">
+            single-spa is a framework for integrating different JavaScript
+            microfrontends into a single frontend application. Architecting
+            your frontend using single-spa offers several benefits, such as:
+          </p>
+          <ul class="content__list">
+            <li class="content__list-item">
+              Use multiple frameworks seamlessly without page reloads (React,
+              AngularJS, Angular, Ember, or whatever you're using)
+            </li>
+            <li class="content__list-item">Deploy your microfrontends independently</li>
+            <li class="content__list-item">
+              Compose code using a different framework without modifying your
+              existing application
+            </li>
+            <li class="content__list-item">Lazy load code for improved initial load time</li>
+            <li class="content__list-item">
+              <strong class="content__list-item-strong">Examples:</strong>
+              <span class="content__list-item-span"><a href="https://single-spa.js.org/docs/examples/" target="_blank"
+                  rel="noopener noreferrer" class="content__link">single-spa.org</a></span>
+            </li>
+          </ul>
+        </section>
+        <section class="content__section content__section--fourth" aria-labelledby="mpaHeading">
+          <h2 id="mpaHeading" class="content__subheading">Multi Page Application (MPA)</h2>
+          <p class="content__paragraph">
+            A Multi-page Application (MPA) is a web application composed of
+            many pages that fully reload each time information changes. Any
+            information change or update on the server triggers another page
+            to be displayed in the application.
+          </p>
+          <div role="figure" class="content__figure-wrapper">
+            <img src="./resources/images/micro-frontend-2.png" alt="Multi Page Application Image"
+              class="content__image" />
+          </div>
+          <p class="content__paragraph">
+            MPAs typically use traditional engineering practices. Each page
+            sends a request to the server and completely refreshes all the
+            content, even if only small parts of the information change. This
+            can waste bandwidth and impact performance.
+          </p>
+        </section>
+        <section class="content__section content__section--fifth" aria-labelledby="moduleFederationHeading">
+          <h2 id="moduleFederationHeading" class="content__subheading">Module Federation</h2>
+          <figure class="content__figure">
+            <img src="./resources/images/micro-frontend-3.png" alt="Module Federation Diagram" class="content__image" />
+            <figcaption class="content__caption">
+              <a href="https://res.cloudinary.com" target="_blank" rel="noopener noreferrer" class="content__link">
+                https://res.cloudinary.com</a>
+            </figcaption>
+          </figure>
+          <p class="content__paragraph">
+            Module Federation is a module added to Webpack that provides
+            flexibility and customization for building your application.
+          </p>
+          <p class="content__paragraph">
+            Module Federation allows a JavaScript application to dynamically
+            load code from another application and share resources. If the
+            consuming application lacks a dependency required by the federated
+            code, Webpack will download the missing dependency from the
+            federated source automatically.
+          </p>
+        </section>
+        <section class="content__section content__section--sixth" aria-labelledby="monorepoHeading">
+          <h2 id="monorepoHeading" class="content__subheading">Architecture of Repository Monorepo</h2>
+          <div role="figure" class="content__figure-wrapper">
+            <img src="./resources/images/micro-frontend-4.png" alt="Monorepo Over Git Image" class="content__image" />
+          </div>
+          <p class="content__paragraph">
+            A monorepo is a single repository that stores different projects.
+            This approach is used by many large tech companies like Facebook,
+            Google, Microsoft, Twitter, and Uber. Like a microfrontend, each
+            project within a monorepo is independent and can be developed and
+            maintained in isolation.
+          </p>
+          <p class="content__paragraph">
+            People unfamiliar with the concept often confuse a monorepo with a
+            monolith. However, a monorepo is a code repository, while
+            monoliths are typically large, single codebases. Monoliths can be
+            used for both monoliths and microservices architectures.
+          </p>
+          <blockquote aria-live="polite" class="content__blockquote">
+            <em class="content__blockquote-em">Use tools that help, not because they're trendy.</em>
+          </blockquote>
+        </section>
+        <section class="content__section content__section--seventh" aria-labelledby="nxAndMonorepoHeading">
+          <h2 id="nxAndMonorepoHeading" class="content__subheading">
+            Nx Workspace Tool + Monorepo (Perfect Union)
+          </h2>
+          <p class="content__paragraph">
+            Nx Workspace is a TypeScript-based monorepo tool built on top of
+            Angular DevKit. It provides a workspace, CLI, cloud-based build
+            scheduling, and exceptional language-level IDE support.
+          </p>
+          <p class="content__paragraph">I recommend these practical articles:</p>
+          <ol class="content__ordered-list">
+            <li class="content__list-item">
+              <a href="https://www.thisdot.co/blog/introduction-to-building-an-angular-app-with-nx-workspace"
+                target="_blank" rel="noopener noreferrer" class="content__link">Building an Angular app with Nx
+                Workspaces</a>
+            </li>
+            <li class="content__list-item">
+              <a href="https://medium.com/lapis/adapting-monorepo-with-nx-ionic-nest-aws-serverless-gitlab-ci-a7d7a34f9070"
+                target="_blank" rel="noopener noreferrer" class="content__link">Simplify the development life cycle with
+                Nx</a>
+            </li>
+            <li class="content__list-item">
+              <p id="videoDescriptionNXWorkspaces" class="content__video-description">
+                Video about getting started with Nx Workspaces
+              </p>
+            </li>
+          </ol>
+          <iframe src="https://www.youtube.com/embed/QqM3MlyurUA" title="Getting Started with Nx Workspaces"
+            aria-label="Getting Started with Nx Workspaces" aria-describedby="videoDescriptionNXWorkspaces"
+            allowfullscreen class="content__iframe"></iframe>
+        </section>
+        <section class="content__section content__section--eighth" aria-labelledby="conclusionHeading">
+          <h2 id="conclusionHeading" class="content__subheading">Conclusion</h2>
+          <p class="content__paragraph">
+            This section explored several practices frequently used with microfrontends. The goal is not to definitively
+            declare one approach as superior, but to provide a starting point for navigating your options.
+          </p>
+          <p class="content__paragraph">
+            Remember, 100% scalability is not always achievable. Always strive to select the approach that best fits the
+            context and specific requirements of your project.
+          </p>
+          <div aria-hidden="true" class="content__dots">
+            &middot; &middot; &middot;
+          </div>
+          <h3 class="content__final-thoughts">
+            <em class="content__final-thoughts-em">Originally published on my LinkedIn:</em>
+            <a href="https://www.linkedin.com/pulse/5-microfrontend-pratices-davi-roberto" target="_blank"
+              rel="noopener noreferrer" class="content__link">linkedin.com/in/davifsroberto</a>
+          </h3>
+        </section>
+
+        <footer aria-label="Explore related topics" class="related-topics">
+          <ul class="related-topics__list">
+            <li class="related-topics__item">
+              <a href="https://medium.com/tag/frontend-architecture" target="_blank" rel="noopener noreferrer"
+                class="related-topics__link">Frontend
+                Architecture</a>
+            </li>
+            <li class="related-topics__item">
+              <a href="https://medium.com/tag/micro-frontends" target="_blank" rel="noopener noreferrer"
+                class="related-topics__link">Micro
+                Frontends</a>
+            </li>
+            <li class="related-topics__item">
+              <a href="https://medium.com/tag/frontend-engineering" target="_blank" rel="noopener noreferrer"
+                class="related-topics__link">Frontend
+                Engineering</a>
+            </li>
+            <li class="related-topics__item">
+              <a href="https://medium.com/tag/front-end-development" target="_blank" rel="noopener noreferrer"
+                class="related-topics__link">Front End
+                Development</a>
+            </li>
+            <li class="related-topics__item">
+              <a href="https://medium.com/tag/davifsroberto" target="_blank" rel="noopener noreferrer"
+                class="related-topics__link">Davifsroberto</a>
+            </li>
+          </ul>
+        </footer>
+    </article>
+  </main>
+
+  <footer id="footerOfWebPage" aria-label="Website additional navigation" class="footer">
+    <nav class="footer__nav">
+      <ul class="footer__list">
+        <li class="footer__item">
+          <a href="#" class="footer__link">Help</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Status</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">About</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Careers</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Blog</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Privacy</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Terms</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Text to speech</a>
+        </li>
+        <li class="footer__item">
+          <a href="#" class="footer__link">Teams</a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>
