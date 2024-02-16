@@ -7,10 +7,9 @@
 
 /* VARIABLES */
 :root {
-  --color-background-body: #00074d;
   --color-text-main: #fff;
   --color-text-secondary: #f7d72b;
-  --shadow-text: 0 10px 20px rgba(0, 0, 0, 100);
+  --shadow-text: 0 10px 20px rgba(0, 0, 0, 1);
   --margin-sections: 20rem;
 }
 
@@ -23,54 +22,53 @@ body {
 }
 
 /* ARTICLE */
-
 .magazine {
   width: 80vw;
-  margin: 5rem 0 5rem 0;
+  margin: 5rem auto; /* Centrado horizontal con margen automático */
   background-image: url(../images/rainy-forest.jpg);
   background-size: cover;
   background-position: center;
-  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 1);
+  box-shadow: var(--shadow-text);
   border-radius: 10px;
 }
 
 /* ARTICLE HEADER */
-article header {
+.magazine__header {
   padding: 4rem 5rem;
   text-shadow: var(--shadow-text);
 }
 
-article header h1 {
+.magazine__title {
   font-size: 15vw;
   line-height: 0.8;
   color: var(--color-text-main);
 }
 
-article header h3 {
+.magazine__subtitle {
   font-size: 1.6rem;
   color: var(--color-text-main);
 }
 
-article header hr {
+.magazine__separator {
   border: 1px solid var(--color-text-main);
+  width: 100%; /* Asegura que el separador tome todo el ancho disponible */
 }
 
 /* ARTICLE SECTION MAIN */
-
-article section {
+.magazine__content {
   margin-top: var(--margin-sections);
   margin-bottom: var(--margin-sections);
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 
-article section div {
+.magazine__highlight {
   margin-right: 13rem;
   width: 30%;
 }
 
-article section div h2 {
+.magazine__topic {
   font-size: 8rem;
   font-family: "Industrial Gothic W01 Single";
   color: var(--color-text-secondary);
@@ -78,23 +76,21 @@ article section div h2 {
   line-height: 0.9;
 }
 
-article section div hr {
+.magazine__separator {
   border: 1px solid var(--color-text-main);
 }
 
-article section div p {
+.magazine__summary {
   margin-top: 0.5rem;
   color: var(--color-text-main);
   font-family: "Harding Text Web Regular Regular";
   text-align: left;
   font-size: 2rem;
-  text-wrap: wrap;
   line-height: 1;
 }
 
 /* ARTICLE FOOTER */
-
-article footer {
+.magazine__footer {
   color: var(--color-text-main);
   max-height: 5rem;
   display: flex;
@@ -105,11 +101,11 @@ article footer {
   gap: 2rem;
 }
 
-article footer section {
+.magazine__section {
   width: 20%;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   font-size: 1.1rem;
   padding-top: 1rem;
   text-shadow: var(--shadow-text);

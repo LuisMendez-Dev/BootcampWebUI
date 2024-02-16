@@ -6,56 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Exercise magazine cover for Globant's Web UI bootcamp." />
     <meta name="keywords" content="HTML, CSS, SASS, Web UI, Bootcamp, Globant" />
-    <link rel="stylesheet" href="./resources/css/style.css">
+    <link rel="stylesheet" href="./resources/styles/style.css">
     <link
         href="https://db.onlinewebfonts.com/c/7732caef9ed946f7916b3f650e8837c2?family=Harding+Text+Web+Regular+Regular"
         rel="stylesheet" type="text/css" />
     <link href="https://db.onlinewebfonts.com/c/010ff29864e80d6ac04015180e1d4d4e?family=Industrial+Gothic+W01+Single"
-        rel="stylesheet">
+        rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="./resources/images/nature-red-logo.png" type="image/x-icon">
     <title>Day 2 - Magazine Cover</title>
 </head>
 
 <body>
-    <article class="magazine">
-        <header>
-            <h3>The international journal of science / 15 February 2024</h3>
-            <hr>
-            <h1>nature</h1>
+    <article class="magazine" aria-labelledby="mainTitle" aria-describedby="mainDescription">
+        <header class="magazine__header">
+            <h3 class="magazine__subtitle" id="mainTitle">The international journal of science / 15 February 2024</h3>
+            <hr class="magazine__separator" role="presentation" />
+            <h1 class="magazine__title">nature</h1>
         </header>
 
-        <section>
-            <div>
-                <h2>
+        <section class="magazine__content" aria-labelledby="highlightTopic" aria-describedby="highlightSummary">
+            <div class="magazine__highlight">
+                <h2 class="magazine__topic" id="highlightTopic">
                     CLIMATE
                     <br>
                     STRESS
                 </h2>
-                <hr>
-                <p>
+                <hr class="magazine__separator" role="presentation" />
+                <p class="magazine__summary" id="highlightSummary">
                     Amazon rainforest's ecosystem could reach a tipping point by 2050
                 </p>
             </div>
         </section>
 
-        <footer>
-            <section>
-                <h3>Blunt instrument</h3>
-                <p>Mass drug screening could aid precision treatment for cancer</p>
+        <footer class="magazine__footer" role="contentinfo">
+            <section class="magazine__section" aria-labelledby="section1Title" aria-describedby="section1Summary">
+                <h3 class="magazine__section-title" id="section1Title">Blunt instrument</h3>
+                <p class="magazine__section-summary" id="section1Summary">Mass drug screening could aid precision
+                    treatment for cancer</p>
             </section>
-            <section>
-                <h3>
+            <section class="magazine__section" aria-labelledby="section2Title" aria-describedby="section2Summary">
+                <h3 class="magazine__section-title" id="section2Title">
                     Wind exposure
                 </h3>
-                <p>
+                <p class="magazine__section-summary" id="section2Summary">
                     A global profile of population affected by tropical cyclones
                 </p>
             </section>
-            <section>
-                <h3>
+            <section class="magazine__section" aria-labelledby="section3Title" aria-describedby="section3Summary">
+                <h3 class="magazine__section-title" id="section3Title">
                     Language lesson
                 </h3>
-                <p>
+                <p class="magazine__section-summary" id="section3Summary">
                     Neural probe reveals how brain encodes elements of speech
                 </p>
             </section>
