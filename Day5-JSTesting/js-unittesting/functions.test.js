@@ -128,8 +128,8 @@ describe("checkTruthy function", () => {
       {},
       function () {},
       new Date(),
-      -42,
-      3.14,
+      -2024,
+      3.1415,
     ];
 
     //ACT & ASSERT
