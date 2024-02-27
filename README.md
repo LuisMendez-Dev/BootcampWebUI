@@ -20,5 +20,12 @@ Welcome to my GitHub repository! This repository is dedicated to storing all the
 - **Google Chrome** v120+
 - **NodeJS** v18+
 
-## Project Setup
-Coming Soon
+## Vite Projects Setup
+Once you are in the root of the project, execute this command
+```
+npm i
+```
+Subsequently, to run the project in a development environment, use this command
+```
+npm run dev
+```
