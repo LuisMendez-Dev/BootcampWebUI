@@ -13,6 +13,11 @@ Welcome to my GitHub repository! This repository is dedicated to storing all the
 
 - **Day 1**: HTML (main), CSS. [Reference](https://medium.com/@davifsroberto/5-microfrontend-pratices-84d843958754)
 - **Day 2**: HTML, CSS (main), SASS. [Reference](https://www.nature.com/nature/volumes/626/issues/7999)
+- **Day 3**: Concepts
+- **Day 4**: JavaScript
+- **Day 5**: JavaScript, Jest
+- **Day 6**: ReactJS, Axios
+- **Day 7**: ReactJS
 - **Project Contact List**: React. [Reference](https://xd.adobe.com/view/165c41fb-e8a3-40e7-a850-d90f064a94a2-430f/)
 
 
