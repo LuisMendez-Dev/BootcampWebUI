@@ -1,0 +1,36 @@
+.error {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 4rem;
+  font-size: 2rem;
+  font-family: "Grisly Beast", sans-serif;
+}
+
+.error__number {
+  font-size: 5em;
+  color: #ffdf00;
+}
+
+.error__link {
+  padding: 1em 2em;
+  font-size: 0.5em;
+  font-family: "Grisly Beast", sans-serif;
+  border-radius: 0.5em;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.error__link:hover {
+  background-color: #ffdf00;
+}
+
+.error__link:visited {
+  color: black;
+}

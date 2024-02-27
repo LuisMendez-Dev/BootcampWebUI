@@ -1,0 +1,20 @@
+:root {
+  --primery-text-color: #ffe200;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  height: calc(100vh - 7rem);
+}
+
+.home__title {
+  font-family: "Simpsonfont", sans-serif;
+}
+
+.home__title-span {
+  color: var(--primery-text-color);
+}

@@ -1,0 +1,57 @@
+:root {
+  --card-bg-color: #fed90f;
+  --card-content-bg-color: #fff;
+  --card-border-radius: 10px;
+  --card-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  --card-gap: 2rem;
+  --font-size: 1.2rem;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+.card {
+  height: 28rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  padding: 3rem;
+  border-radius: var(--card-border-radius);
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-shadow);
+  gap: var(--card-gap);
+  flex-shrink: 0;
+}
+
+.card__content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-content-bg-color);
+  padding: 1.5rem;
+  border-radius: var(--card-border-radius);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-regular);
+  text-align: start;
+}
+
+.card__image {
+  width: 7rem;
+  height: 100%;
+  padding-top: 5rem;
+}
+
+.card__quote {
+  padding: 2rem 0;
+  height: 100%;
+}
+
+.card__character-name {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+}
