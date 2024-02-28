@@ -55,3 +55,26 @@
   display: flex;
   padding-bottom: 2rem;
 }
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  .nav__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem 3rem 2rem 0;
+  }
+
+  .nav__hamburger {
+    display: none;
+  }
+}
