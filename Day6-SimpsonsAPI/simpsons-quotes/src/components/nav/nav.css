@@ -1,12 +1,25 @@
+:root {
+  --color-primary: #000;
+  --color-secondary: #ffe200;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --spacing-small: 1rem;
+  --spacing-medium: 2rem;
+  --spacing-large: 3rem;
+  --font-size-large: 1.5rem;
+  --font-size-icon: 24px;
+  --border-active: 5px solid var(--color-secondary);
+  --box-shadow-nav: 0 1rem 2rem var(--color-shadow);
+}
+
 .nav {
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-nav);
 }
 
 .nav__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: var(--spacing-small) var(--spacing-medium);
 }
 
 .nav__logo-container {
@@ -21,7 +34,7 @@
 .nav__hamburger {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: var(--font-size-icon);
   cursor: pointer;
 }
 
@@ -30,30 +43,29 @@
   display: none;
   flex-direction: column;
   text-align: center;
-  gap: 2rem;
+  gap: var(--spacing-medium);
 }
 
 .nav__link {
   text-decoration: none;
-  font-size: 1.5rem;
-  color: #000;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  font-size: var(--font-size-large);
+  color: var(--color-primary);
+  padding: var(--spacing-small) var(--spacing-medium);
 }
 
 .nav__link--active {
-  border: 2px solid #000;
+  border-bottom: var(--border-active);
 }
 
 .nav__item {
-  padding: 1rem 2rem;
+  padding: var(--spacing-small) var(--spacing-medium);
   cursor: pointer;
   width: 100%;
 }
 
 .nav__list--open {
   display: flex;
-  padding-bottom: 2rem;
+  padding-bottom: var(--spacing-medium);
 }
 
 /* MEDIA QUERIES */
@@ -62,7 +74,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: var(--spacing-small) var(--spacing-medium);
   }
 
   .nav__list {
@@ -70,8 +82,8 @@
     justify-content: end;
     align-items: center;
     flex-direction: row;
-    gap: 2rem;
-    padding: 2rem 3rem 2rem 0;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium) var(--spacing-large) var(--spacing-medium) 0;
   }
 
   .nav__hamburger {

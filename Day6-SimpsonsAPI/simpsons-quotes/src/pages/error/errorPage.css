@@ -1,3 +1,18 @@
+:root {
+  --error-color-primary: #ffdf00;
+  --error-color-background: #f1f1f1;
+  --error-color-text: black;
+  --error-font-size-main: 2rem;
+  --error-font-size-number: 5em;
+  --error-font-size-link: 0.5em;
+  --error-spacing-gap: 4rem;
+  --error-link-padding-vertical: 1em;
+  --error-link-padding-horizontal: 2em;
+  --error-link-border-radius: 0.5em;
+  --error-transition-background: background-color 0.3s;
+  --font-family-primary: "Grisly Beast", sans-serif;
+}
+
 .error {
   height: 100vh;
   display: flex;
@@ -5,32 +20,33 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 4rem;
-  font-size: 2rem;
-  font-family: "Grisly Beast", sans-serif;
+  gap: var(--error-spacing-gap);
+  font-size: var(--error-font-size-main);
 }
 
 .error__number {
-  font-size: 5em;
-  color: #ffdf00;
+  font-family: var(--font-family-primary);
+  font-size: var(--error-font-size-number);
+  color: var(--error-color-primary);
 }
 
 .error__link {
-  padding: 1em 2em;
-  font-size: 0.5em;
-  font-family: "Grisly Beast", sans-serif;
-  border-radius: 0.5em;
-  background-color: #f1f1f1;
+  padding: var(--error-link-padding-vertical)
+    var(--error-link-padding-horizontal);
+  font-size: var(--error-font-size-link);
+  border-radius: var(--error-link-border-radius);
+  background-color: var(--error-color-background);
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: var(--error-transition-background);
   text-decoration: none;
+  color: var(--error-color-text);
 }
 
 .error__link:hover {
-  background-color: #ffdf00;
+  background-color: var(--error-color-primary);
 }
 
 .error__link:visited {
-  color: black;
+  color: var(--error-color-text);
 }

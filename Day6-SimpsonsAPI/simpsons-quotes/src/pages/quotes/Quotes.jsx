@@ -16,17 +16,14 @@ function Quotes() {
   const { data, error, loading, refetchQuotes } = useFetchQuotes(url);
 
   const handleClick = () => {
-    if (!searchValue) {
-      setUrl(BASE_URL);
-    } else {
-      const encodedSearchValue = encodeURIComponent(searchValue.trim());
-      const newUrl = FILTERED_URL.replace("X", rangeValue).replace(
-        "Y",
-        encodedSearchValue
-      );
-      setUrl(newUrl);
-    }
-    refetchQuotes();
+    const newUrl = searchValue
+      ? FILTERED_URL.replace("X", rangeValue).replace(
+          "Y",
+          encodeURIComponent(searchValue.trim())
+        )
+      : BASE_URL;
+    setUrl(newUrl);
+    refetchQuotes(newUrl);
   };
 
   const handleCountChange = (event) => {
