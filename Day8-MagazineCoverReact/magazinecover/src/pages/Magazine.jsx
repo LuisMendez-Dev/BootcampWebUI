@@ -5,7 +5,11 @@ import "./magazine.css";
 
 function Magazine() {
   return (
-    <article className="magazine">
+    <article
+      className="magazine"
+      aria-labelledby="mainTitle"
+      aria-describedby="mainDescription"
+    >
       <MagazineHeader />
       <MagazineHighlight />
       <MagazineFooter />
