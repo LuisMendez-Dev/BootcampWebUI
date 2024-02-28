@@ -1,0 +1,17 @@
+.magazine__header {
+  padding: 4rem 5rem;
+  text-shadow: 0 10px 20px rgb(0, 0, 0);
+}
+.magazine__title {
+  font-size: clamp(1rem, 15vw, 50rem);
+  line-height: 0.8;
+  color: #fff;
+}
+.magazine__subtitle {
+  font-size: clamp(0.5rem, 1.5vw, 5rem);
+  color: #fff;
+}
+.magazine__separator {
+  border: 1px solid #fff;
+  width: 100%;
+}

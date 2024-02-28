@@ -1,0 +1,26 @@
+@import url(https://db.onlinewebfonts.com/c/010ff29864e80d6ac04015180e1d4d4e?family=Industrial+Gothic+W01+Single);
+
+.magazine__content {
+  margin: 40rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.magazine__highlight {
+  margin-right: 13rem;
+  width: 30%;
+}
+.magazine__topic {
+  font-size: clamp(1rem, 8vw + 1rem, 15rem);
+  color: #f7d72b;
+  text-align: start;
+  line-height: 0.9;
+  font-family: "Industrial Gothic W01 Single";
+}
+.magazine__summary {
+  margin-top: 0.5rem;
+  color: #fff;
+  text-align: left;
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
+  line-height: 1;
+}

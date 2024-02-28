@@ -1,0 +1,8 @@
+.magazine {
+  width: 80vw;
+  margin: 10rem auto;
+  background-image: url(../assets/images/rainy-forest.jpg);
+  background-size: cover;
+  box-shadow: 0 10px 20px rgb(0, 0, 0);
+  border-radius: 10px;
+}
