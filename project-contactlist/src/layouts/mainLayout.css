@@ -1,0 +1,8 @@
+.main-layout__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 7.2rem);
+  padding-inline: 4rem;
+  padding-block: 6rem;
+}

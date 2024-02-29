@@ -1,0 +1,143 @@
+:root {
+  --text-color: #434343;
+  --emphasis-color: #c1d72f;
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.navigation__logo {
+  width: clamp(8rem, 10vw, 10rem);
+}
+
+.navigation__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.navigation__list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.navigation__item {
+  cursor: pointer;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: clamp(1.5rem, 1vw + 1rem, 2rem);
+  font-weight: 600;
+}
+
+.navigation__link--active {
+  color: var(--emphasis-color);
+}
+
+.navigation__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.2rem, 0.5vw + 1rem, 0.5rem);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  gap: 1rem;
+  background-color: var(--emphasis-color);
+  color: var(--text-color);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.navigation__button--icon {
+  width: clamp(1.5rem, 1vw + 1rem, 1.5rem);
+}
+
+.navigation__button-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navigation__menu-icon {
+  width: 2.5rem;
+  display: none;
+  background: none;
+  border: none;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 500px) {
+  .navigation {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .navigation__top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navigation__menu {
+    display: none;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .navigation__menu-icon {
+    display: flex;
+    background: none;
+    border: none;
+    align-items: center;
+  }
+
+  .navigation__button--menu {
+    display: flex;
+    background: none;
+    border: none;
+    align-items: center;
+  }
+
+  .navigation__menu--open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation__list {
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+}
+
+@media (max-width: 240px) {
+  .navigation__logo {
+    display: none;
+  }
+
+  .navigation__top {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
