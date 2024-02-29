@@ -1,0 +1,15 @@
+:root {
+  --font-size-movie-title: 6rem;
+}
+
+.movie-title {
+  font-size: var(--font-size-movie-title);
+  text-shadow: 10px 1px 5px #00000025;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 480px) {
+  :root {
+    --font-size-movie-title: clamp(2rem, 10vw, 10rem);
+  }
+}

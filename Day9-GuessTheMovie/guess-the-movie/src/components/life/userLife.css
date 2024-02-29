@@ -1,0 +1,17 @@
+:root {
+  --counter-text-color: #fff;
+  --counter-bg-color: #000;
+  --counter-highlight-color: #f00;
+}
+
+.user-life__counter {
+  color: var(--counter-text-color);
+  transition: all 0.5s ease-in-out;
+  background-color: var(--counter-bg-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-life__counter--highlight {
+  color: var(--counter-highlight-color);
+}

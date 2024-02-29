@@ -1,0 +1,17 @@
+:root {
+  --counter-color: #fff;
+  --counter-bg: #000;
+  --highlight-color: #00b100;
+}
+
+.user-score__counter {
+  color: var(--counter-color);
+  transition: all 0.5s ease-in-out;
+  background-color: var(--counter-bg);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-score__counter--highlight {
+  color: var(--highlight-color);
+}

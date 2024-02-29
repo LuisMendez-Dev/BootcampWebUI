@@ -1,0 +1,108 @@
+:root {
+  --background-color: #f5f5f5;
+  --font-size-guess-header: 2rem;
+  --font-size-guess-title: 3rem;
+  --height-main: calc(100% - 10rem);
+  --color-information: #a4a4a4;
+  --color-message-wrong: #ff0000;
+  --color-message-correct: #00b100;
+  --color-restart-button: #8f00b2;
+  --color-restart-button-hover: #6a007f;
+  --color-text: #fff;
+  --box-shadow-header: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.guess-game {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+.guess-game__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3rem 2rem;
+  font-size: var(--font-size-guess-header);
+  box-shadow: var(--box-shadow-header);
+}
+
+.guess-game__main {
+  width: 100%;
+  height: var(--height-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.guess-game__information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  color: var(--color-information);
+  border-bottom: 1px solid var(--color-information);
+  padding-bottom: 1rem;
+}
+
+.guess-game__title {
+  font-size: var(--font-size-guess-title);
+  padding-bottom: 1rem;
+  color: var(--color-information);
+}
+
+.guess-game__message {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.guess-game__message--wrong {
+  color: var(--color-message-wrong);
+}
+
+.guess-game__message--correct {
+  color: var(--color-message-correct);
+}
+
+.guess-game__restart-button {
+  width: 12rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--color-restart-button);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.guess-game__restart-button:hover {
+  background-color: var(--color-restart-button-hover);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 480px) {
+  .guess-game__header,
+  .guess-game__title,
+  .guess-game__message {
+    text-align: center;
+  }
+
+  :root {
+    --font-size-guess-header: clamp(1rem, 5vw, 2rem);
+    --font-size-guess-title: clamp(2rem, 5vw, 4rem);
+  }
+
+  .guess-game__message {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
+@media (max-width: 350px) {
+  .guess-game__header {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
