@@ -1,0 +1,59 @@
+:root {
+  --color-primary: #c1d72f;
+  --color-secondary: #dbdbdb;
+}
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-page__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.error-page__title {
+  font-size: clamp(5rem, 30vw, 20rem);
+  color: var(--color-primary);
+  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
+  animation: jump 2s infinite;
+}
+
+.error-page__text {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+}
+
+.error-page__button {
+  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  background: none;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.9rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

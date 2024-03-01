@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 7.2rem);
-  padding-inline: 4rem;
-  padding-block: 6rem;
+  padding-inline: 6rem;
+  padding-block: 8rem;
 }

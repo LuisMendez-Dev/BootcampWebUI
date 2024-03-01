@@ -1,0 +1,25 @@
+:root {
+  --favorite-button-color: #c1d72f;
+}
+
+.card__button {
+  background: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__button-favorite {
+  border: 2px solid var(--favorite-button-color);
+  fill: var(--favorite-button-color);
+}
+
+.card__button-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--favorite-button-color);
+}

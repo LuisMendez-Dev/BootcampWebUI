@@ -1,11 +1,13 @@
 import './divisor.css';
 
-/* eslint-disable react/prop-types */
+// eslint-disable-next-line react/prop-types
 function Divisor({ divisorTitle }) {
   return (
-    <div>
-      <h2>{divisorTitle}</h2>
-      <hr />
+    <div className="divisor" aria-labelledby="divisorTitle">
+      <h2 id="divisorTitle" className="divisor__title">
+        {divisorTitle}
+      </h2>
+      <hr className="divisor__line" />
     </div>
   );
 }

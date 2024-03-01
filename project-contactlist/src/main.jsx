@@ -1,29 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from 'react-router-dom';
 import './main.css';
 import App from './App';
+import ErrorPage from './pages/error/ErrorPage';
+import ContactsPage from './pages/contacts/ContactsPage';
+import OverviewPage from './pages/overview/OverviewPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <div>Not found</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
+        element: <Navigate to="/overview" replace />,
+      },
+      {
         path: 'overview',
-        element: <div>Overview</div>,
+        element: <OverviewPage />,
       },
       {
         path: 'contacts',
-        element: <div>Contacts</div>,
+        element: <ContactsPage />,
       },
       {
         path: 'favorites',
-        element: <div>Favorites</div>,
+        element: null,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <ErrorPage />,
   },
 ]);
 
