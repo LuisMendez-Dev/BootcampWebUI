@@ -1,0 +1,136 @@
+.tickets__container {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-block: 5rem;
+}
+
+.tickets {
+  background: var(--background-containers);
+  width: clamp(18rem, 80vw, 55rem);
+  padding: 3rem;
+  border-radius: 10px;
+}
+
+.tickets__validation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.tickets__validation-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ticket__validation-Icon {
+  width: 4rem;
+  height: 2rem;
+}
+
+.tickets__title {
+  font-family: "Roboto bold", sans-serif;
+  font-size: 2rem;
+  margin-block: 2rem;
+}
+
+.tickets__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tickets__label {
+  font-size: 1.5rem;
+}
+
+.tickets__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tickets__input {
+  padding: 1rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background-color: var(--background-app);
+}
+
+.tickets__textarea {
+  resize: none;
+}
+
+.tickets__form-check {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.tickets__error {
+  color: red;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tickets__submit-btn {
+  padding: 2rem;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--button-submit);
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cards__container {
+  width: clamp(18rem, 80vw, 50rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cards__container-title {
+  font-size: 2rem;
+}
+
+.cards__container-subtitle {
+  font-size: 1.5rem;
+  color: rgb(147, 147, 147);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 300px) {
+  .tickets__form {
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .tickets__form-check {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tickets__validation {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+}
