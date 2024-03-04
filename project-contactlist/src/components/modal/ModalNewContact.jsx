@@ -1,10 +1,22 @@
 /* eslint-disable react/prop-types */
 import './modalNewContact.css';
 import crossIcon from '../../assets/icons/cross.svg';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { validateFormOnSubmit } from '../../utils/formValidations';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
 
 function ModalNewContact({ openModal, closeModal }) {
+  const dispatch = useDispatch();
   const modalRef = useRef();
+  const [form, setForm] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    favorite: false,
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmited, setIsSubmited] = useState(false);
 
   useEffect(() => {
     if (openModal) {
@@ -12,13 +24,19 @@ function ModalNewContact({ openModal, closeModal }) {
     }
   }, [openModal]);
 
+  useEffect(() => {
+    if (isSubmited) {
+      const timer = setTimeout(() => {
+        setIsSubmited(false);
+        closeModal();
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmited, closeModal]);
+
   if (!openModal) {
     return null;
   }
-
-  const handleClose = () => {
-    closeModal();
-  };
 
   const handleKeyDown = (event) => {
     if (event.key === 'Escape') {
@@ -26,9 +44,62 @@ function ModalNewContact({ openModal, closeModal }) {
     }
   };
 
+  const resetForm = () => {
+    setForm({
+      firstname: '',
+      lastname: '',
+      email: '',
+      favorite: false,
+    });
+    setErrors({});
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // !TODO: Add new contact to the list
+    const { firstname, lastname, email } = form;
+    const { errors, isValid } = validateFormOnSubmit({
+      firstName: firstname,
+      lastName: lastname,
+      email,
+    });
+
+    setErrors(errors);
+
+    if (isValid) {
+      try {
+        dispatch(
+          addContact({
+            first_name: firstname,
+            last_name: lastname,
+            email: email,
+            favorite: form.favorite,
+          })
+        );
+        setIsSubmited(true);
+        resetForm();
+      } catch (error) {
+        console.error('Error adding contact', error);
+      }
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+    if (errors[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: null,
+      }));
+    }
+  };
+
+  const handleClose = () => {
+    resetForm();
+    closeModal();
   };
 
   return (
@@ -43,6 +114,9 @@ function ModalNewContact({ openModal, closeModal }) {
         ref={modalRef}
       >
         <div className="modal__content">
+          {isSubmited && (
+            <p className="modal__success-message">Contact added successfully</p>
+          )}
           <div className="modal__header">
             <h2 id="modalTitle" className="modal__title">
               Add a Contact
@@ -56,36 +130,47 @@ function ModalNewContact({ openModal, closeModal }) {
             </button>
           </div>
           <form onSubmit={handleSubmit} className="modal__form">
-            {/* TODO: Change inputs -> Component */}
             <input
               type="text"
               id="contactFirstName"
               name="firstname"
               className="modal__input"
+              value={form.firstname}
+              onChange={handleChange}
               placeholder="First name"
               autoComplete="off"
-              required
             />
+            {errors?.firstName && (
+              <p className="modal__error-message">{errors.firstName}</p>
+            )}
 
             <input
               type="text"
               id="contactLastName"
               name="lastname"
               className="modal__input"
+              value={form.lastname}
+              onChange={handleChange}
               placeholder="Last name"
               autoComplete="off"
-              required
             />
+            {errors?.lastName && (
+              <p className="modal__error-message">{errors.lastName}</p>
+            )}
 
             <input
               type="email"
               id="contactEmail"
               name="email"
               className="modal__input"
+              value={form.email}
+              onChange={handleChange}
               placeholder="Email"
               autoComplete="off"
-              required
             />
+            {errors?.email && (
+              <p className="modal__error-message">{errors.email}</p>
+            )}
 
             <div className="modal__checkbox-group">
               <label
@@ -100,6 +185,8 @@ function ModalNewContact({ openModal, closeModal }) {
                 id="favoriteContact"
                 name="favorite"
                 className="modal__checkbox"
+                onChange={handleChange}
+                checked={form.favorite}
               />
             </div>
 

@@ -5,16 +5,23 @@ import {
   createBrowserRouter,
   Navigate,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import './main.css';
 import App from './App';
 import ErrorPage from './pages/error/ErrorPage';
 import ContactsPage from './pages/contacts/ContactsPage';
 import OverviewPage from './pages/overview/OverviewPage';
+import DataGuardian from './components/dataGuardian/DataGuardian';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <DataGuardian>
+        <App />
+      </DataGuardian>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -43,6 +50,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

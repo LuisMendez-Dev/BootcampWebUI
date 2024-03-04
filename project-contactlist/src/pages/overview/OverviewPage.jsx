@@ -1,43 +1,37 @@
+import { useSelector } from 'react-redux';
 import Divisor from '../../components/divisor/Divisor';
-import Spinner from '../../components/spinner/Spinner';
-import useFetchData from '../../hooks/useFetchData';
-import './overviewPage.css';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
-
-const BASE_URL = 'https://reqres.in/api/users';
-const QUANTITY = 6;
+import shuffleWithSlice from '../../utils/shuffleData';
+import './overviewPage.css';
 
 function OverviewPage() {
-  const { data, error, loading, refetchData } = useFetchData(
-    BASE_URL + `?per_page=${QUANTITY}`
-  );
+  const contacts = useSelector((state) => state.contacts.contacts);
 
-  const showContactsCardList = () => {
-    return (
-      !loading &&
-      !error &&
-      data.data &&
-      data.data.map((contact) => (
-        <Card
-          key={contact.id}
-          contactImage={contact.avatar}
-          contactName={`${contact.first_name} ${contact.last_name}`}
-          contactEmail={contact.email}
-        />
-      ))
-    );
+  const renderContactsCards = () => {
+    const shuffledContacts = shuffleWithSlice(contacts, 0, 6);
+
+    return shuffledContacts.map((contact) => (
+      <Card
+        key={contact.id}
+        contactImage={contact.avatar}
+        contactName={`${contact.first_name} ${contact.last_name}`}
+        contactEmail={contact.email}
+      />
+    ));
   };
 
   return (
     <section className="overview">
       <Divisor divisorTitle="Favorites" className="overview__divisor" />
-      <div className="overview__section-favorites"></div> {/* TODO */}
+      <div className="overview__section-favorites"></div>{' '}
       <Divisor divisorTitle="Contact List" className="overview__divisor" />
       <div className="overview__section-contact">
-        {loading && <Spinner />}
-        {error && <p className="overview__error">{error.message}</p>}
-        <CardList>{showContactsCardList()}</CardList>
+        {!contacts || contacts.length === 0 ? (
+          <p>No contacts available. Sad :C</p>
+        ) : (
+          <CardList>{renderContactsCards()}</CardList>
+        )}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useFetchData = (url) => {
-  const [data, setData] = useState([]);
+  const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -10,7 +10,7 @@ const useFetchData = (url) => {
     setLoading(true);
     try {
       const response = await axios.get(url);
-      setData(response.data);
+      setFetchedData(response.data);
     } catch (error) {
       setError(error);
     } finally {
@@ -23,11 +23,11 @@ const useFetchData = (url) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
-  const refetchData = (url) => {
-    fetchData(url);
+  const refetchData = () => {
+    fetchData();
   };
 
-  return { data, error, loading, refetchData };
+  return { fetchedData, error, loading, refetchData };
 };
 
 export default useFetchData;
