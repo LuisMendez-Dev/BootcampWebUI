@@ -60,7 +60,7 @@ function GuessGame() {
 
         {lives > 0 && (
           <MovieTitle
-            emojis={movie?.emoji}
+            emojis={movie.emoji}
             className="guess-game__movie-title"
           />
         )}
