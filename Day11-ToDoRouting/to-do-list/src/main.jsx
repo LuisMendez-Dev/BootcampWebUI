@@ -10,12 +10,13 @@ import ToDoList from "./pages/ListPage/ToDoList.jsx";
 import ToDoNew from "./pages/NewPage/ToDoNew.jsx";
 import ToDoDetail from "./pages/DetailPage/ToDoDetail.jsx";
 import "./index.css";
+import ErrorPage from "./pages/errorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>Not Found</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>Not Found</div>,
+    element: <ErrorPage />,
   },
 ]);
 
