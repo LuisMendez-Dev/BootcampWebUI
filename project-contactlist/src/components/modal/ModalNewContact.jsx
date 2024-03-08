@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import './modalNewContact.css';
 import crossIcon from '../../assets/icons/cross.svg';
 import { useEffect, useRef, useState } from 'react';
 import { validateFormOnSubmit } from '../../utils/formValidations';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { addToContacts } from '../../redux/contactsSlice';
 
 function ModalNewContact({ openModal, closeModal }) {
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function ModalNewContact({ openModal, closeModal }) {
     firstname: '',
     lastname: '',
     email: '',
-    favorite: false,
+    isFavorite: false,
   });
   const [errors, setErrors] = useState({});
   const [isSubmited, setIsSubmited] = useState(false);
@@ -28,7 +27,6 @@ function ModalNewContact({ openModal, closeModal }) {
     if (isSubmited) {
       const timer = setTimeout(() => {
         setIsSubmited(false);
-        closeModal();
       }, 3000);
       return () => clearTimeout(timer);
     }
@@ -49,7 +47,7 @@ function ModalNewContact({ openModal, closeModal }) {
       firstname: '',
       lastname: '',
       email: '',
-      favorite: false,
+      isFavorite: false,
     });
     setErrors({});
   };
@@ -68,11 +66,11 @@ function ModalNewContact({ openModal, closeModal }) {
     if (isValid) {
       try {
         dispatch(
-          addContact({
+          addToContacts({
             first_name: firstname,
             last_name: lastname,
             email: email,
-            favorite: form.favorite,
+            isFavorite: form.favorite,
           })
         );
         setIsSubmited(true);
@@ -183,10 +181,10 @@ function ModalNewContact({ openModal, closeModal }) {
               <input
                 type="checkbox"
                 id="favoriteContact"
-                name="favorite"
+                name="isFavorite"
                 className="modal__checkbox"
                 onChange={handleChange}
-                checked={form.favorite}
+                checked={form.isFavorite}
               />
             </div>
 

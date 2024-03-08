@@ -1,11 +1,10 @@
 .overview {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
 
 .overview__section-favorites {
-  margin-bottom: 2rem;
-  font-size: clamp(0.8rem, 2.5vw, 1.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;

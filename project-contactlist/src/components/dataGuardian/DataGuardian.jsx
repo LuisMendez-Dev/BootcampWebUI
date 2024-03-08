@@ -1,26 +1,33 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setContacts } from '../../redux/contactsSlice';
 import useFetchData from '../../hooks/useFetchData';
 import Spinner from '../../components/spinner/Spinner';
-
-const BASE_URL = 'https://reqres.in/api/users';
-const QUANTITY = 12;
+import uniqueIdGenerator from '../../utils/uniqueIdGenerator';
+import { BASE_URL, QUANTITY } from '../../utils/constants';
 
 const DataGuardian = ({ children }) => {
   const dispatch = useDispatch();
+  const contactsFromStorage = localStorage.getItem('contacts');
   const { fetchedData, error, loading } = useFetchData(
     `${BASE_URL}?per_page=${QUANTITY}`
   );
 
   useEffect(() => {
-    const contactsFromStorage = localStorage.getItem('contacts');
     if (contactsFromStorage) {
       dispatch(setContacts(JSON.parse(contactsFromStorage)));
     } else if (!loading && !error && fetchedData && fetchedData.data) {
-      localStorage.setItem('contacts', JSON.stringify(fetchedData.data));
-      dispatch(setContacts(fetchedData.data));
+      const payloadWithFavorite = fetchedData.data.map((contact) => ({
+        ...contact,
+        id: uniqueIdGenerator(),
+        isFavorite: false,
+      }));
+
+      localStorage.setItem('contacts', JSON.stringify(payloadWithFavorite));
+      localStorage.setItem('favorites', JSON.stringify([]));
+
+      dispatch(setContacts(payloadWithFavorite));
     }
   }, [fetchedData, error, loading, dispatch]);
 

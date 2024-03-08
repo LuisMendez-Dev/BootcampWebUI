@@ -4,9 +4,8 @@ import menu from '../../assets/images/menu.png';
 import Uniologo from '../../assets/images/unio-logo.png';
 import plusIcon from '../../assets/icons/plus.svg';
 import ModalNewContact from '../modal/ModalNewContact';
+import { NAV_BAR_ROUTES } from '../../utils/constants';
 import './navigation.css';
-
-const NAV_BAR_ROUTES = ['/overview', '/contacts', '/favorites'];
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

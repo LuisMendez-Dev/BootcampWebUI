@@ -1,7 +1,6 @@
 .cardlist {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   padding: 1rem;
-  justify-content: space-evenly;
+  justify-content: center;
 }

@@ -1,11 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contactsSlice';
 
-export const store = configureStore({
+const preloadedState = {
+  contacts: {
+    contacts: JSON.parse(localStorage.getItem('contacts')) || [],
+    favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+  },
+};
+
+const store = configureStore({
   reducer: {
     contacts: contactsReducer,
-    favorites: favoritesReducer,
   },
+  preloadedState,
 });
 
 export default store;

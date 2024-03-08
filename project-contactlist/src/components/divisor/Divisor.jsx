@@ -1,6 +1,5 @@
 import './divisor.css';
 
-// eslint-disable-next-line react/prop-types
 function Divisor({ divisorTitle }) {
   return (
     <div className="divisor" aria-labelledby="divisorTitle">

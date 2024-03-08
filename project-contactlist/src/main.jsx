@@ -7,12 +7,13 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import './main.css';
 import App from './App';
 import ErrorPage from './pages/error/ErrorPage';
 import ContactsPage from './pages/contacts/ContactsPage';
 import OverviewPage from './pages/overview/OverviewPage';
 import DataGuardian from './components/dataGuardian/DataGuardian';
+import FavoritesPage from './pages/favorites/FavoritesPage';
+import './main.css';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'favorites',
-        element: null,
+        element: <FavoritesPage />,
       },
     ],
   },
