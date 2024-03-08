@@ -6,6 +6,10 @@
   margin-top: 5rem;
 }
 
+.todo__title {
+  font-size: clamp(2rem, 5vw, 2rem);
+}
+
 .todo__list {
   display: flex;
   flex-direction: column;

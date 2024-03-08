@@ -6,6 +6,10 @@
   margin-top: 5rem;
 }
 
+.todo__new-title {
+  font-size: clamp(2rem, 5vw, 2rem);
+}
+
 .todo__new-form {
   display: flex;
   justify-content: center;
@@ -22,12 +26,12 @@
   width: 100%;
   padding: 2rem;
   border-radius: 10px;
-  font-size: clamp(1rem, 5vw, 2rem);
+  font-size: clamp(1rem, 5vw, 1.5rem);
   border: none;
+  background-color: rgb(248, 246, 246);
 }
 
 .todo__new-textarea {
-  height: 30rem;
   padding: 2rem;
   border-radius: 10px;
 }
@@ -43,6 +47,7 @@
   width: 100%;
   padding: 2rem;
   border-radius: 10px;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
@@ -64,6 +69,14 @@
   background-color: rgb(172, 225, 86);
   cursor: pointer;
   transition: all 0.3s;
+}
+
+.button__back-link {
+  text-decoration: none;
+}
+
+.button__back-link:active {
+  color: black;
 }
 
 .todo__new-submit:hover {

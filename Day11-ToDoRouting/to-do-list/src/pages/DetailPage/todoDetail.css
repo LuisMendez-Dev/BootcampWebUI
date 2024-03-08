@@ -1,0 +1,59 @@
+.todo__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.todo__detail-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.todo__information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.todo__information-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.todo__label {
+  width: 100%;
+  text-align: start;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.todo__input {
+  width: 100%;
+  padding: 2rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.todo__textarea {
+  height: 10rem;
+}
+
+.todo__button-back {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.todo__button-back:hover {
+  scale: 0.9;
+}

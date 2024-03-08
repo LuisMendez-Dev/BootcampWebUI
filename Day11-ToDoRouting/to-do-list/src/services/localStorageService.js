@@ -1,8 +1,13 @@
-const TASKS_STORAGE_KEY = "tasks";
+import { TASKS_STORAGE_KEY } from "../utils/constants";
 
 const getTasks = () => {
   const tasksJson = localStorage.getItem(TASKS_STORAGE_KEY);
   return tasksJson ? JSON.parse(tasksJson) : [];
+};
+
+const getTaskById = (taskId) => {
+  const tasks = getTasks();
+  return tasks.find((task) => task.id === taskId);
 };
 
 const addTask = (task) => {
@@ -21,4 +26,4 @@ const setTasks = (tasks) => {
   localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks));
 };
 
-export { getTasks, addTask, deleteTask, setTasks };
+export { getTasks, addTask, deleteTask, setTasks, getTaskById };

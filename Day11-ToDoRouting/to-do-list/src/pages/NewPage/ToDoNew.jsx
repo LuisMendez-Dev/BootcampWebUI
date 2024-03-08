@@ -8,9 +8,10 @@ import {
 } from "../../utils/validations";
 import { addTask } from "../../services/localStorageService";
 import calculateId from "../../utils/calculateId";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ToDoNew() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -69,7 +70,7 @@ function ToDoNew() {
 
   return (
     <section className="todo__new-container">
-      <h1>NEW TODO</h1>
+      <h1 className="todo__new-title">NEW TASK</h1>
       <Container>
         {submitBehavior === true && (
           <p className="success__message-submit">Task added successfully!</p>
@@ -116,6 +117,7 @@ function ToDoNew() {
               onChange={handleInputChange}
               defaultValue={formData.creationDate}
               value={formData.creationDateDate}
+              disabled
             />
           </div>
           <button type="submit" className="todo__new-submit">
@@ -123,10 +125,8 @@ function ToDoNew() {
           </button>
         </form>
       </Container>
-      <button className="button__back">
-        <Link className="button__back-link" to={"/list"}>
-          Back to list
-        </Link>
+      <button className="button__back" onClick={() => navigate("/list")}>
+        Back to list
       </button>
     </section>
   );

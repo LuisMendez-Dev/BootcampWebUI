@@ -2,13 +2,14 @@ import randomColorCard from "../../utils/randomColorCard";
 import crossIcon from "../../assets/icons/cross.svg";
 import "./card.css";
 
-function Card({ task, handleDeleteTask }) {
+function Card({ task, handleDeleteTask, onClick }) {
   return (
     <div
       className="card"
       style={{
         backgroundColor: randomColorCard(),
       }}
+      onClick={onClick}
     >
       <div className="card__header">
         <p className="card__title">{task.title}</p>

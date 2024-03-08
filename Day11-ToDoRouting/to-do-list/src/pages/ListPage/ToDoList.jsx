@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import todoData from "../../utils/todoData";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import { useEffect, useState } from "react";
 import "./todoList.css";
@@ -12,12 +11,13 @@ import Container from "../../components/container/Container";
 
 function ToDoList() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (getTasks().length > 0) {
       setData(getTasks());
     } else {
-      setTasks(todoData);
+      setTasks([]);
     }
   }, []);
 
@@ -39,6 +39,9 @@ function ToDoList() {
                   <Card
                     task={todo}
                     handleDeleteTask={() => handleDeleteTask(todo.id)}
+                    onClick={() => {
+                      navigate(`/detail/${todo.id}`);
+                    }}
                   />
                 </li>
               ))}

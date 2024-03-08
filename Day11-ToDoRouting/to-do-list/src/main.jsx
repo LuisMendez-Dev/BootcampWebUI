@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ToDoList from "./pages/ListPage/ToDoList.jsx";
 import ToDoNew from "./pages/NewPage/ToDoNew.jsx";
+import ToDoDetail from "./pages/DetailPage/ToDoDetail.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/new",
         element: <ToDoNew />,
+      },
+      {
+        path: "/detail/:id",
+        element: <ToDoDetail />,
       },
     ],
   },
