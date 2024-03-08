@@ -91,7 +91,9 @@ function ToDoNew() {
               onChange={handleInputChange}
               value={formData.title}
             />
-            {errors.title && <p className="error__message">{errors.title}</p>}
+            <p className={`error__message ${errors.title ? "" : "hidden"}`}>
+              {errors.title || ""}
+            </p>
           </div>
           <div className="todo__new-group">
             <textarea
@@ -104,9 +106,11 @@ function ToDoNew() {
               onChange={handleInputChange}
               value={formData.description}
             />
-            {errors.description && (
-              <p className="error__message">{errors.description}</p>
-            )}
+            <p
+              className={`error__message ${errors.description ? "" : "hidden"}`}
+            >
+              {errors.description || ""}
+            </p>
           </div>
           <div className="todo__new-group">
             <input
@@ -115,8 +119,7 @@ function ToDoNew() {
               id="dueDate"
               name="dueDate"
               onChange={handleInputChange}
-              defaultValue={formData.creationDate}
-              value={formData.creationDateDate}
+              value={formData.creationDate}
               disabled
             />
           </div>

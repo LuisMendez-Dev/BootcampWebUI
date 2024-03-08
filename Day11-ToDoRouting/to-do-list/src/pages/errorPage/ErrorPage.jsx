@@ -3,7 +3,7 @@ import "./errorPage.css";
 
 function ErrorPage() {
   return (
-    <section className="error">
+    <section className="error__section">
       <h1 className="error__title">404</h1>
       <p className="error__text">Page not found</p>
       <button className="error__button">

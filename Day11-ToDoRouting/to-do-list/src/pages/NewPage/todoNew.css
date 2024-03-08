@@ -103,3 +103,7 @@
 .button__back:hover {
   scale: 0.9;
 }
+
+.error__message.hidden {
+  visibility: hidden;
+}
