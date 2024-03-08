@@ -1,0 +1,38 @@
+.todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.todo__list-item {
+  text-decoration: none;
+  list-style: none;
+}
+
+.todo__button {
+  width: 20rem;
+  padding: 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.todo__button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  scale: 0.9;
+}
+
+.todo__button-link {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,20 @@
+@import url("https://fonts.cdnfonts.com/css/finlandica");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "finlandica", sans-serif;
+  background-color: #fff;
+}
+
+.outlet {
+  margin-inline: 5%;
+}

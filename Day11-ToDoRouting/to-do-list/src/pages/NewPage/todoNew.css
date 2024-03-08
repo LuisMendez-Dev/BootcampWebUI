@@ -1,0 +1,92 @@
+.todo__new-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.todo__new-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.todo__new-group {
+  width: 100%;
+}
+
+.todo__new-input {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  font-size: clamp(1rem, 5vw, 2rem);
+  border: none;
+}
+
+.todo__new-textarea {
+  height: 30rem;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.error__message {
+  margin-top: 1rem;
+  color: red;
+  font-size: 1.5rem;
+}
+
+.success__message-submit,
+.error__message-submit {
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.success__message-submit {
+  background-color: lightgreen;
+}
+
+.error__message-submit {
+  background-color: lightcoral;
+}
+
+.todo__new-submit {
+  border: none;
+  padding: 2rem 4rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  background-color: rgb(172, 225, 86);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.todo__new-submit:hover {
+  scale: 0.9;
+}
+
+.button__back {
+  border: none;
+  padding: 2rem 4rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button__back-link {
+  text-decoration: none;
+}
+
+.button__back-link:active {
+  color: black;
+}
+
+.button__back:hover {
+  scale: 0.9;
+}

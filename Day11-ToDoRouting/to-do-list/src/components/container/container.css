@@ -1,0 +1,13 @@
+.container {
+  width: clamp(20rem, 90vw, 80rem);
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  gap: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 2rem;
+  margin-block: 5rem;
+  background-color: rgba(243, 243, 243, 0.9);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
