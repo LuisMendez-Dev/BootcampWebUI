@@ -1,7 +1,3 @@
-:root {
-  --color-primary: #c1d72f;
-}
-
 .divisor {
   display: flex;
   align-items: center;
@@ -11,9 +7,9 @@
 .divisor__title {
   margin: 0;
   white-space: nowrap;
-  font-size: clamp(2rem, 2vw + 1rem, 3rem);
-  font-family: 'Adobe Clean', sans-serif;
+  font-size: clamp(0.2rem, 5vw, 3rem);
   font-weight: bold;
+  color: var(--dark-secondary);
 }
 
 .divisor__line {
@@ -21,7 +17,7 @@
   border: 0;
   margin: 0;
   height: 0.2rem;
-  background-color: var(--color-primary);
+  background-color: var(--globant-green);
 }
 
 @media (max-width: 330px) {

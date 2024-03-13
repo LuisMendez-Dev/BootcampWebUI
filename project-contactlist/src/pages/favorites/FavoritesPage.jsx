@@ -3,12 +3,34 @@ import './favoritesPage.css';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
 import Divisor from '../../components/divisor/Divisor';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import Pagination from '../../components/pagination/Pagination';
+import { ITEMS_PER_PAGE } from '../../utils/constants';
+import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
 
 function FavoritesPage() {
+  const [currentItems, setCurrentItems] = useState([]);
   const favorites = useSelector((state) => state.contacts.favorites);
 
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = parseInt(searchParams.get('page')) || 1;
+
+  const paginate = (pageNumber) => {
+    setSearchParams({ page: pageNumber });
+  };
+
+  useEffect(() => {
+    navigate(`?page=${currentPage}`);
+  }, [currentPage, navigate]);
+
+  const handlePageChange = (newItems) => {
+    setCurrentItems(newItems);
+  };
+
   const renderFavoritesCards = () =>
-    favorites.map((contact) => (
+    currentItems.map((contact) => (
       <Card
         key={contact.id}
         contactImage={contact.avatar}
@@ -24,10 +46,20 @@ function FavoritesPage() {
     <section className="favorites">
       <Divisor divisorTitle="Favorites" />
       <div className="favorites__section">
-        {favorites.length > 0 ? (
-          <CardList>{renderFavoritesCards()}</CardList>
+        {!favorites || favorites.length === 0 ? (
+          <EmptyMessage message="No favorites available. Sad :c" />
         ) : (
-          <p>No favorites available. Add some! :D</p>
+          <>
+            <CardList>{renderFavoritesCards()}</CardList>
+            <Pagination
+              itemsPerPage={ITEMS_PER_PAGE}
+              totalItems={favorites.length}
+              paginate={paginate}
+              currentPage={currentPage}
+              data={favorites}
+              onPageChange={handlePageChange}
+            />
+          </>
         )}
       </div>
     </section>

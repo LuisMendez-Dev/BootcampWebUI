@@ -5,10 +5,10 @@ import './mainLayout.css';
 function MainLayout() {
   return (
     <>
-      <header className="main-layout__header">
+      <header className="main__layout-header">
         <Navigation />
       </header>
-      <main className="main-layout__content">
+      <main className="main__layout-content">
         <Outlet />
       </main>
     </>

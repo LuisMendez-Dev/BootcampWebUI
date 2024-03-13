@@ -1,15 +1,10 @@
-:root {
-  --text-color: #434343;
-  --emphasis-color: #c1d72f;
-}
-
 .navigation {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 var(--card-shadow);
 }
 
 .navigation__top {
@@ -38,7 +33,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: clamp(1rem, 2vw, 5rem);
 }
 
 .navigation__item {
@@ -47,32 +42,32 @@
 
 .navigation__link {
   text-decoration: none;
-  color: var(--text-color);
-  font-size: clamp(1.5rem, 1vw + 1rem, 2rem);
+  color: var(--dark-secondary);
+  font-size: clamp(1rem, 2vw, 2rem);
   font-weight: 600;
 }
 
 .navigation__link--active {
-  color: var(--emphasis-color);
+  color: var(--globant-green);
 }
 
 .navigation__button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(1.2rem, 0.5vw + 1rem, 0.5rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   gap: 1rem;
-  background-color: var(--emphasis-color);
-  color: var(--text-color);
+  background-color: var(--globant-green);
+  color: var(--dark-primary);
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 var(--card-shadow);
 }
 
-.navigation__button--icon {
+.navigation__button-icon {
   width: clamp(1.5rem, 1vw + 1rem, 1.5rem);
 }
 
@@ -90,8 +85,22 @@
   border: none;
 }
 
+.navigation__button-darkmode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navigation__button-darkmode-icon {
+  width: clamp(2rem, 1vw + 1rem, 3rem);
+}
+
 /* MEDIA QUERIES */
-@media (max-width: 500px) {
+
+@media (max-width: 450px) {
   .navigation {
     flex-direction: column;
     gap: 3rem;
@@ -116,14 +125,14 @@
     align-items: center;
   }
 
-  .navigation__button--menu {
+  .navigation__button-menu {
     display: flex;
     background: none;
     border: none;
     align-items: center;
   }
 
-  .navigation__menu--open {
+  .navigation__menu-open {
     display: flex;
     flex-direction: column;
     align-items: center;

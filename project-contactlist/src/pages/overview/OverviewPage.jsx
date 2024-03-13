@@ -5,9 +5,8 @@ import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
 import shuffleWithSlice from '../../utils/shuffleData';
 import './overviewPage.css';
-
-const MAX_CARDS_CONTACTS = 6;
-const MAX_CARDS_FAVORITES = 4;
+import { MAX_CARDS_CONTACTS, MAX_CARDS_FAVORITES } from '../../utils/constants';
+import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
 
 function OverviewPage() {
   const favorites = useSelector((state) => state.contacts.favorites);
@@ -49,10 +48,10 @@ function OverviewPage() {
     <section className="overview">
       <Divisor divisorTitle="Favorites" className="overview__divisor" />
       <div className="overview__section-favorites">
-        {favorites.length > 0  ? (
+        {favorites.length > 0 ? (
           <CardList>{renderFavoritesCards()}</CardList>
         ) : (
-          <p>No favorites available. Add some! :D</p>
+          <EmptyMessage message="No favorites available. Add some! :D" />
         )}
       </div>
       <Divisor divisorTitle="Contact List" className="overview__divisor" />
@@ -60,7 +59,7 @@ function OverviewPage() {
         {contacts && contacts.length > 0 ? (
           <CardList>{renderContactsCards()}</CardList>
         ) : (
-          <p>No contacts available. Sad :C</p>
+          <EmptyMessage message="No contacts available. Add some! :D" />
         )}
       </div>
     </section>

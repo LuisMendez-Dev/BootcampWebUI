@@ -25,7 +25,7 @@ const buttonStatus = {
     alt: 'Remove from favorites',
     ariaLabel: 'Remove from favorites',
     action: removeFromFavorites,
-    text: 'Remove',
+    text: 'REMOVE',
   },
   removeFavoriteContacts: {
     className: 'card__button card__button-remove-favorite-contacts',

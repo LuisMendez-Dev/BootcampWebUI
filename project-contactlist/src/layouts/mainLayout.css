@@ -1,7 +1,4 @@
-.main-layout__content {
-  display: flex;
-  flex-direction: column;
+.main__layout-content {
   width: 100%;
-  padding-inline: 6rem;
-  padding-block: 8rem;
+  padding: 5rem 5rem;
 }

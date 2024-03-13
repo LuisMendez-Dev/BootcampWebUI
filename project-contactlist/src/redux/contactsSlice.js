@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RANDOM_PROFILE_PHOTO } from '../utils/constants';
 
 export const contactsSlice = createSlice({
