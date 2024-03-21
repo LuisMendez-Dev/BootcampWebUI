@@ -1,0 +1,50 @@
+.error__section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.error__title {
+  font-size: clamp(6rem, 20vw, 25rem);
+  color: #f44336;
+  animation: jump 2s infinite;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.error__text {
+  font-size: clamp(2rem, 5vw, 5rem);
+  color: #f44336;
+}
+
+.error__button {
+  margin-top: 2rem;
+  border: none;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.error__button:hover {
+  scale: 0.9;
+}
+
+.error__link {
+  text-decoration: none;
+  color: #000;
+}
