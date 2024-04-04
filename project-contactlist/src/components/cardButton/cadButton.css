@@ -7,7 +7,6 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .card__button:hover {
@@ -19,9 +18,10 @@
 }
 
 .card__button-remove {
+  font-size: clamp(0.6rem, 2.5vw, 1.2rem);
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
   padding-inline: 1rem;
   border: 2px solid var(--globant-red);
   color: var(--globant-red);
@@ -52,7 +52,16 @@
 }
 
 .card__button-icon {
-  width: 2rem;
-  height: 2rem;
+  width: clamp(1.5rem, 2vw, 2rem);
   padding: 0.2rem;
+}
+
+@media screen and (max-width: 319px) {
+  .card__button-remove {
+    padding: 0.2;
+  }
+
+  .card__button-text {
+    display: none;
+  }
 }

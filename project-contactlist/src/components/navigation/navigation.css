@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  box-shadow: 0 0 10px 0 var(--card-shadow);
+  box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.281);
 }
 
 .navigation__top {

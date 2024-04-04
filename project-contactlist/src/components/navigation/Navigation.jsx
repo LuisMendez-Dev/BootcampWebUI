@@ -103,7 +103,13 @@ function Navigation() {
               alt="Add new contact"
               className="navigation__button-icon"
             />
-            NEW
+            <p
+              className="
+            navigation__button-text
+            "
+            >
+              NEW
+            </p>
           </button>
         </ul>
       </div>

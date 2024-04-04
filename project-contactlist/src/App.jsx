@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setContacts } from './redux/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { allContactsSelector, setContacts } from './redux/contactsSlice';
 import useFetchData from './hooks/useFetchData';
 import Spinner from './components/spinner/Spinner';
 import { BASE_URL, QUANTITY } from './utils/constants';
@@ -16,39 +16,43 @@ import { nanoid } from 'nanoid';
 
 function App() {
   const dispatch = useDispatch();
-  const contactsFromStorage = getFromLocalStorage('contacts');
+  const mode = useSelector((state) => state.mode.mode);
+  const contacts = useSelector(allContactsSelector);
   let { fetchedData, error, loading } = useFetchData(
     `${BASE_URL}?per_page=${QUANTITY}`
   );
 
   useEffect(() => {
-    if (contactsFromStorage) {
-      dispatch(setContacts(contactsFromStorage));
-    } else if (!loading && !error && fetchedData && fetchedData.data) {
-      const payloadWithFavorite = fetchedData.data.map((contact) => ({
-        ...contact,
-        id: nanoid(),
-        isFavorite: false,
-      }));
+    if (contacts.length === 0) {
+      const contactsFromStorage = getFromLocalStorage('contacts');
+      if (contactsFromStorage) {
+        dispatch(setContacts(contactsFromStorage));
+      } else if (!loading && !error && fetchedData && fetchedData.data) {
+        const payloadWithFavorite = fetchedData.data.map((contact) => ({
+          ...contact,
+          id: nanoid(),
+          isFavorite: false,
+        }));
 
-      addToLocalStorage('contacts', payloadWithFavorite);
-      addToLocalStorage('favorites', []);
+        addToLocalStorage('contacts', payloadWithFavorite);
+        addToLocalStorage('favorites', []);
 
-      dispatch(setContacts(payloadWithFavorite));
+        dispatch(setContacts(payloadWithFavorite));
+      }
     }
-  }, [fetchedData]);
+  }, [contacts.length, loading, error, fetchedData]);
 
   useEffect(() => {
-    const savedMode = JSON.parse(localStorage.getItem('mode'));
-    if (savedMode === 'dark') {
+    if (mode === 'dark') {
       darkModeApp();
     } else {
-      if (!savedMode) {
-        localStorage.setItem('mode', JSON.stringify('light'));
-      }
       lightModeApp();
     }
-  }, [dispatch]);
+    const savedMode = getFromLocalStorage('mode');
+    if (savedMode !== mode) {
+      addToLocalStorage('mode', JSON.stringify(mode));
+    }
+  }, [mode]);
 
   if (loading) {
     return (

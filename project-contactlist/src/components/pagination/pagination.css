@@ -13,7 +13,7 @@
 .pagination__current-page {
   font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 700;
-  color: #000;
+  color: var(--color-pagination-text);
 }
 
 .pagination__buttons {
@@ -37,7 +37,7 @@
     scale: 1;
   }
   .pagination__icon {
-    filter: opacity(0.2);
+    filter: opacity(0.3);
   }
 }
 

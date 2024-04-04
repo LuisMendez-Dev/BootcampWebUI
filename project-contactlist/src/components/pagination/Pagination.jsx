@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import {
-  MAX_PAGE_NUMBER_LIMIT,
-  MIN_PAGE_NUMBER_LIMIT,
-} from '../../utils/constants';
 import previousIcon from '../../assets/icons/previous.svg';
+import previousIconDarkMode from '../../assets/icons/previous-dark.svg';
+import nextIconDarkMode from '../../assets/icons/next-dark.svg';
 import nextIcon from '../../assets/icons/next.svg';
 import firstIcon from '../../assets/icons/first.svg';
+import firstIconDarkMode from '../../assets/icons/first-dark.svg';
 import lastIcon from '../../assets/icons/last.svg';
+import lastIconDarkMode from '../../assets/icons/last-dark.svg';
+import { useNavigate } from 'react-router-dom';
 import './pagination.css';
+import { getFromLocalStorage } from '../../services/localStorageService';
+import { useSelector } from 'react-redux';
 
 const Pagination = ({
   itemsPerPage,
@@ -18,8 +21,11 @@ const Pagination = ({
   data,
   onPageChange,
 }) => {
+  const darkMode = useSelector(
+    (state) => state.mode.mode || getFromLocalStorage('mode')
+  );
+  const navigate = useNavigate();
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const pageNumbers = [];
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -29,11 +35,14 @@ const Pagination = ({
     onPageChange(currentItems);
   }, [currentPage, data]);
 
-  for (let i = 1; i <= totalPages; i++) {
-    if (i < MAX_PAGE_NUMBER_LIMIT + 1 && i > MIN_PAGE_NUMBER_LIMIT) {
-      pageNumbers.push(i);
+  // UseEffect for validation
+  useEffect(() => {
+    if (currentPage < 1 || currentPage > totalPages) {
+      if (currentPage !== 1) {
+        navigate(`?page=${1}`);
+      }
     }
-  }
+  }, [currentPage, totalPages, navigate]);
 
   const handleNextPage = () => {
     paginate(currentPage + 1);
@@ -62,7 +71,11 @@ const Pagination = ({
           onClick={handleFirstPage}
           disabled={currentPage === 1}
         >
-          <img className="pagination__icon" src={firstIcon} alt="First icon" />
+          <img
+            className="pagination__icon"
+            src={darkMode === 'dark' ? firstIconDarkMode : firstIcon}
+            alt="First icon"
+          />
         </button>
         <button
           className="pagination__button pagination__button--previous"
@@ -71,7 +84,7 @@ const Pagination = ({
         >
           <img
             className="pagination__icon"
-            src={previousIcon}
+            src={darkMode === 'dark' ? previousIconDarkMode : previousIcon}
             alt="Previous icon"
           />
         </button>
@@ -80,14 +93,22 @@ const Pagination = ({
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          <img className="pagination__icon" src={nextIcon} alt="Next icon" />
+          <img
+            className="pagination__icon"
+            src={darkMode === 'dark' ? nextIconDarkMode : nextIcon}
+            alt="Next icon"
+          />
         </button>
         <button
           className="pagination__button pagination__button--last"
           onClick={handleLastPage}
           disabled={currentPage === totalPages}
         >
-          <img className="pagination__icon" src={lastIcon} alt="Last icon" />
+          <img
+            className="pagination__icon"
+            src={darkMode === 'dark' ? lastIconDarkMode : lastIcon}
+            alt="Last icon"
+          />
         </button>
       </div>
     </div>

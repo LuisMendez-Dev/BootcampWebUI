@@ -4,7 +4,7 @@ import { addToLocalStorage } from '../services/localStorageService';
 export const modeSlice = createSlice({
   name: 'mode',
   initialState: {
-    mode: 'dark',
+    mode: '',
   },
   reducers: {
     toggleMode: (state) => {

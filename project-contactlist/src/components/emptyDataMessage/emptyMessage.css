@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  background-color: var(--message-background);
   padding: 1.5rem 3rem;
   border-radius: 5rem;
 }

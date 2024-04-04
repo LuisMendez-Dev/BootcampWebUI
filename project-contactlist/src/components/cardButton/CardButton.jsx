@@ -66,9 +66,7 @@ function CardButton({ type, contactId }) {
     }
   };
 
-  const handleEditClick = () => {
-    
-  };
+  const handleEditClick = () => {};
 
   return (
     <button

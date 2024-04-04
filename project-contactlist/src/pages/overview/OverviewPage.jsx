@@ -8,7 +8,7 @@ import './overviewPage.css';
 import { MAX_CARDS_CONTACTS, MAX_CARDS_FAVORITES } from '../../utils/constants';
 import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
 
-function OverviewPage() {
+const OverviewPage = () => {
   const favorites = useSelector((state) => state.contacts.favorites);
   const contacts = useSelector((state) => state.contacts.contacts);
 
@@ -64,6 +64,6 @@ function OverviewPage() {
       </div>
     </section>
   );
-}
+};
 
 export default OverviewPage;

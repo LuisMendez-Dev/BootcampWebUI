@@ -9,7 +9,7 @@ import Pagination from '../../components/pagination/Pagination';
 import { ITEMS_PER_PAGE } from '../../utils/constants';
 import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
 
-function FavoritesPage() {
+const FavoritesPage = () => {
   const [currentItems, setCurrentItems] = useState([]);
   const favorites = useSelector((state) => state.contacts.favorites);
 
@@ -64,6 +64,6 @@ function FavoritesPage() {
       </div>
     </section>
   );
-}
+};
 
 export default FavoritesPage;

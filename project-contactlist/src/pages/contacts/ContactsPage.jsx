@@ -3,28 +3,23 @@ import { allContactsSelector } from '../../redux/contactsSlice.js';
 import Divisor from '../../components/divisor/Divisor';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Pagination from '../../components/pagination/Pagination.jsx';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { ITEMS_PER_PAGE } from '../../utils/constants.js';
 import './contactsPage.css';
 import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage.jsx';
 
-function ContactsPage() {
+const ContactsPage = () => {
   const [currentItems, setCurrentItems] = useState([]);
   const allContacts = useSelector(allContactsSelector);
 
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get('page')) || 1;
 
   const paginate = (pageNumber) => {
     setSearchParams({ page: pageNumber });
   };
-
-  useEffect(() => {
-    navigate(`?page=${currentPage}`);
-  }, [currentPage, navigate]);
 
   const handlePageChange = (newItems) => {
     setCurrentItems(newItems);
@@ -69,6 +64,6 @@ function ContactsPage() {
       </div>
     </section>
   );
-}
+};
 
 export default ContactsPage;

@@ -1,7 +1,5 @@
 .card {
-  max-width: clamp(10rem, 100vw, 30rem);
   width: 100%;
-  flex: 1;
   flex-basis: 25rem;
   display: flex;
   flex-direction: column;
@@ -53,7 +51,7 @@
 
 .card__email {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: #666;
+  color: var(--color-email);
   margin-block: 0.5rem;
 }
 

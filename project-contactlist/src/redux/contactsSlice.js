@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { RANDOM_PROFILE_PHOTO } from '../utils/constants';
 import uniqueIdGenerator from '../utils/uniqueIdGenerator';
 import { addToLocalStorage } from '../services/localStorageService';
@@ -124,33 +124,24 @@ export const contactsSlice = createSlice({
   },
 });
 
-// UNOPTIMIZED SELECTOR:
-// !TODO: Optimize the selector to prevent unnecessary re-renders
-/*
-Even though the contacts and favorites in the Redux state have not changed, 
-each call to the selector creates a new array with new object references, 
-which causes React to think that the data has changed and thus triggers a new rendering
-*/
-export const allContactsSelector = (state) => {
-  const contacts = state.contacts.contacts;
-  const favorites = state.contacts.favorites;
-  const allContacts = [];
+const selectContacts = (state) => state.contacts.contacts;
+const selectFavorites = (state) => state.contacts.favorites;
 
-  favorites.forEach((favoriteContact) => {
-    allContacts.push({ ...favoriteContact, isFavorite: true });
-  });
+export const allContactsSelector = createSelector(
+  [selectContacts, selectFavorites],
+  (contacts, favorites) => {
+    const favoriteIds = new Set(favorites.map((fav) => fav.id));
 
-  contacts.forEach((contact) => {
-    const isFavorite = favorites.some(
-      (favoriteContact) => favoriteContact.id === contact.id
-    );
-    if (!isFavorite) {
-      allContacts.push({ ...contact, isFavorite: false });
-    }
-  });
+    const combinedContacts = [
+      ...favorites.map((favorite) => ({ ...favorite, isFavorite: true })),
+      ...contacts
+        .filter((contact) => !favoriteIds.has(contact.id))
+        .map((contact) => ({ ...contact, isFavorite: false })),
+    ];
 
-  return allContacts;
-};
+    return combinedContacts;
+  }
+);
 
 export const {
   setContacts,
