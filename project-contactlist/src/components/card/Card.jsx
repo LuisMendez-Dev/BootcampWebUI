@@ -10,8 +10,6 @@ const cardTypeToImageClass = {
   default: 'card__image',
 };
 
-// TODO: change cardTypeImageClass
-
 function Card({
   contactImage,
   contactName,
@@ -46,6 +44,7 @@ function Card({
           aria-labelledby={`contactName-${contactId}`}
           aria-describedby={`contactEmail-${contactId}`}
         >
+          <CardButton type={'editContact'} contactId={contactId} />
           {buttons &&
             buttons.map((buttonType) => (
               <CardButton

@@ -1,16 +1,16 @@
 import './modalNewContact.css';
-import crossIcon from '../../assets/icons/cross.svg';
+import crossIcon from '../../assets/icons/cross-dark.svg';
 import { useEffect, useRef, useState } from 'react';
 import { validateFormOnSubmit } from '../../utils/formValidations';
 import { useDispatch } from 'react-redux';
-import { addToContacts } from '../../redux/contactsSlice';
+import { addToContacts, addToFavoritesModal } from '../../redux/contactsSlice';
 
 function ModalNewContact({ openModal, closeModal }) {
   const dispatch = useDispatch();
   const modalRef = useRef();
   const [form, setForm] = useState({
-    firstname: '',
-    lastname: '',
+    first_name: '',
+    last_name: '',
     email: '',
     isFavorite: false,
   });
@@ -44,8 +44,8 @@ function ModalNewContact({ openModal, closeModal }) {
 
   const resetForm = () => {
     setForm({
-      firstname: '',
-      lastname: '',
+      first_name: '',
+      last_name: '',
       email: '',
       isFavorite: false,
     });
@@ -54,10 +54,10 @@ function ModalNewContact({ openModal, closeModal }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { firstname, lastname, email } = form;
+    const { first_name, last_name, email, isFavorite } = form;
     const { errors, isValid } = validateFormOnSubmit({
-      firstName: firstname,
-      lastName: lastname,
+      firstName: first_name,
+      lastName: last_name,
       email,
     });
 
@@ -65,18 +65,15 @@ function ModalNewContact({ openModal, closeModal }) {
 
     if (isValid) {
       try {
-        dispatch(
-          addToContacts({
-            first_name: firstname,
-            last_name: lastname,
-            email: email,
-            isFavorite: form.favorite,
-          })
-        );
+        if (isFavorite) {
+          dispatch(addToFavoritesModal({ first_name, last_name, email }));
+        } else {
+          dispatch(addToContacts({ first_name, last_name, email, isFavorite }));
+        }
         setIsSubmited(true);
         resetForm();
       } catch (error) {
-        console.error('Error adding contact', error);
+        throw new Error(error);
       }
     }
   };
@@ -112,13 +109,7 @@ function ModalNewContact({ openModal, closeModal }) {
         ref={modalRef}
       >
         <div className="modal__content">
-          {isSubmited && (
-            <p className="modal__success-message">Contact added successfully</p>
-          )}
           <div className="modal__header">
-            <h2 id="modalTitle" className="modal__title">
-              Add a Contact
-            </h2>
             <button
               className="modal__close-button"
               onClick={handleClose}
@@ -131,9 +122,9 @@ function ModalNewContact({ openModal, closeModal }) {
             <input
               type="text"
               id="contactFirstName"
-              name="firstname"
+              name="first_name"
               className="modal__input"
-              value={form.firstname}
+              value={form.first_name}
               onChange={handleChange}
               placeholder="First name"
               autoComplete="off"
@@ -145,9 +136,9 @@ function ModalNewContact({ openModal, closeModal }) {
             <input
               type="text"
               id="contactLastName"
-              name="lastname"
+              name="last_name"
               className="modal__input"
-              value={form.lastname}
+              value={form.last_name}
               onChange={handleChange}
               placeholder="Last name"
               autoComplete="off"
@@ -189,7 +180,11 @@ function ModalNewContact({ openModal, closeModal }) {
             </div>
 
             <div className="modal__submit-container">
-              <button type="submit" className="modal__submit-button">
+              <button
+                type="submit"
+                className="modal__submit-button"
+                disabled={!form.first_name && !form.last_name && !form.email}
+              >
                 Save
               </button>
             </div>

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addToLocalStorage } from '../services/localStorageService';
 
 export const modeSlice = createSlice({
   name: 'mode',
@@ -8,7 +9,7 @@ export const modeSlice = createSlice({
   reducers: {
     toggleMode: (state) => {
       state.mode = state.mode === 'light' ? 'dark' : 'light';
-      localStorage.setItem('mode', JSON.stringify(state.mode));
+      addToLocalStorage('mode', state.mode);
     },
   },
 });

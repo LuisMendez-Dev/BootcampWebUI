@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import menu from '../../assets/images/menu.png';
+import menuDark from '../../assets/icons/menu-dark.svg';
+import menuLight from '../../assets/icons/menu-light.svg';
 import Uniologo from '../../assets/images/unio-logo.png';
 import plusIcon from '../../assets/icons/plus.svg';
 import darkModeIcon from '../../assets/icons/mode-dark.svg';
+import lightModeIcon from '../../assets/icons/mode-light.svg';
 import ModalNewContact from '../modal/ModalNewContact';
 import { NAV_BAR_ROUTES } from '../../utils/constants';
 import { darkModeApp, lightModeApp } from '../../utils/lightModeStyles';
@@ -61,7 +63,7 @@ function Navigation() {
           aria-label={menuButtonAlternative}
         >
           <img
-            src={menu}
+            src={lightMode === 'light' ? menuDark : menuLight}
             alt={menuButtonAlternative}
             className="navigation__menu-icon"
           />
@@ -78,7 +80,7 @@ function Navigation() {
             onClick={toggleMode}
           >
             <img
-              src={darkModeIcon}
+              src={lightMode === 'light' ? darkModeIcon : lightModeIcon}
               alt="Dark Mode"
               className="navigation__button-darkmode-icon"
             />

@@ -20,3 +20,10 @@ body {
   background-color: var(--primary);
   font-family: 'Adobe Clean', sans-serif;
 }
+
+.spinner__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RANDOM_PROFILE_PHOTO } from '../utils/constants';
+import uniqueIdGenerator from '../utils/uniqueIdGenerator';
+import { addToLocalStorage } from '../services/localStorageService';
+import { nanoid } from 'nanoid';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -16,16 +19,14 @@ export const contactsSlice = createSlice({
     },
 
     addToContacts: (state, action) => {
-      const randomProfilePhoto = RANDOM_PROFILE_PHOTO;
-
       const newContact = {
-        id: Date.now(), // Unique ID
-        avatar: randomProfilePhoto,
+        id: nanoid(),
+        avatar: RANDOM_PROFILE_PHOTO,
         ...action.payload,
       };
 
       state.contacts.push(newContact);
-      localStorage.setItem('contacts', JSON.stringify(state.contacts));
+      addToLocalStorage('contacts', state.contacts);
     },
 
     deleteContact: (state, action) => {
@@ -40,8 +41,8 @@ export const contactsSlice = createSlice({
       state.contacts = contacts;
       state.favorites = favorites;
 
-      localStorage.setItem('contacts', JSON.stringify(state.contacts));
-      localStorage.setItem('favorites', JSON.stringify(state.favorites));
+      addToLocalStorage('contacts', state.contacts);
+      addToLocalStorage('favorites', state.favorites);
     },
 
     addToFavorites: (state, action) => {
@@ -58,9 +59,21 @@ export const contactsSlice = createSlice({
         state.favorites.push(contactToAdd);
         state.contacts.splice(contactIndex, 1);
 
-        localStorage.setItem('contacts', JSON.stringify(state.contacts));
-        localStorage.setItem('favorites', JSON.stringify(state.favorites));
+        addToLocalStorage('contacts', state.contacts);
+        addToLocalStorage('favorites', state.favorites);
       }
+    },
+
+    addToFavoritesModal: (state, action) => {
+      const contactToAdd = {
+        id: uniqueIdGenerator(),
+        avatar: RANDOM_PROFILE_PHOTO,
+        ...action.payload,
+        isFavorite: true,
+      };
+
+      state.favorites.push(contactToAdd);
+      addToLocalStorage('favorites', state.favorites);
     },
 
     removeFromFavorites: (state, action) => {
@@ -76,8 +89,36 @@ export const contactsSlice = createSlice({
           (contact) => contact.id !== action.payload
         );
 
-        localStorage.setItem('contacts', JSON.stringify(state.contacts));
-        localStorage.setItem('favorites', JSON.stringify(state.favorites));
+        addToLocalStorage('contacts', state.contacts);
+        addToLocalStorage('favorites', state.favorites);
+      }
+    },
+
+    editContact: (state, action) => {
+      const contactTypeFavorite = action.payload.isFavorite;
+
+      if (contactTypeFavorite === false) {
+        const contactIndex = state.contacts.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+
+        state.contacts[contactIndex] = {
+          ...state.contacts[contactIndex],
+          ...action.payload,
+        };
+
+        addToLocalStorage('contacts', state.contacts);
+      } else {
+        const contactIndex = state.favorites.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+
+        state.favorites[contactIndex] = {
+          ...state.favorites[contactIndex],
+          ...action.payload,
+        };
+
+        addToLocalStorage('favorites', state.favorites);
       }
     },
   },
@@ -115,7 +156,9 @@ export const {
   setContacts,
   addToContacts,
   addToFavorites,
+  addToFavoritesModal,
   removeFromFavorites,
   deleteContact,
+  editContact,
 } = contactsSlice.actions;
 export default contactsSlice.reducer;

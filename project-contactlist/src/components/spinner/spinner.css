@@ -1,17 +1,13 @@
-:root {
-  --spinner-color: #c1d72f;
-}
-
 .spinner {
-  width: 5rem;
-  height: 5rem;
-  border-top: 0.5rem solid var(--spinner-color);
-  border-right: 0.5rem solid lightgray;
-  border-bottom: 0.5rem solid lightgray;
-  border-left: 0.5rem solid lightgray;
+  width: clamp(1rem, 10vw, 10rem);
+  height: clamp(1rem, 10vw, 10rem);
+  border-top: 0.5rem solid var(--globant-green);
+  border-right: 0.5rem solid rgb(79, 79, 79);
+  border-bottom: 0.5rem solid rgb(79, 79, 79);
+  border-left: 0.5rem solid rgb(79, 79, 79);
   border-radius: 50%;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   animation: spin 1s linear infinite;
 }
 

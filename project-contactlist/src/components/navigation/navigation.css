@@ -33,7 +33,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: clamp(1rem, 2vw, 5rem);
+  gap: clamp(2rem, 2vw, 5rem);
 }
 
 .navigation__item {
@@ -53,7 +53,6 @@
 
 .navigation__button {
   display: flex;
-  justify-content: center;
   align-items: center;
   font-size: clamp(0.8rem, 2vw, 1rem);
   padding: 0.5rem 1rem;
@@ -68,7 +67,7 @@
 }
 
 .navigation__button-icon {
-  width: clamp(1.5rem, 1vw + 1rem, 1.5rem);
+  width: clamp(1.5rem, 1vw, 1.5rem);
 }
 
 .navigation__button-menu {
@@ -95,7 +94,7 @@
 }
 
 .navigation__button-darkmode-icon {
-  width: clamp(2rem, 1vw + 1rem, 3rem);
+  width: clamp(2rem, 1vw, 3rem);
 }
 
 /* MEDIA QUERIES */
@@ -114,7 +113,6 @@
 
   .navigation__menu {
     display: none;
-    gap: 4rem;
     width: 100%;
   }
 

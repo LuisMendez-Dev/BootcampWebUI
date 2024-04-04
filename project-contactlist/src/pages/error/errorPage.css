@@ -44,6 +44,11 @@
   cursor: pointer;
   padding: 1rem 2rem;
   background-color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.error-page__button:hover {
+  scale: 0.9;
 }
 
 @keyframes jump {

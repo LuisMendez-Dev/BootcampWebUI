@@ -1,7 +1,8 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 import heartIcon from '../../assets/icons/heart.svg';
 import crossIcon from '../../assets/icons/cross.svg';
 import trashIcon from '../../assets/icons/trash-can.svg';
+import editIcon from '../../assets/icons/edit.svg';
 import './cadButton.css';
 import { useDispatch } from 'react-redux';
 import {
@@ -14,7 +15,7 @@ const buttonStatus = {
   addFavorite: {
     className: 'card__button card__button-favorite',
     src: heartIcon,
-    alt: 'Add to favorites',
+    alt: 'Add to favorites icon',
     ariaLabel: 'Add to favorites',
     action: addToFavorites,
     text: '',
@@ -22,7 +23,7 @@ const buttonStatus = {
   removeFavorite: {
     className: 'card__button card__button-remove',
     src: crossIcon,
-    alt: 'Remove from favorites',
+    alt: 'Remove from favorites icon',
     ariaLabel: 'Remove from favorites',
     action: removeFromFavorites,
     text: 'REMOVE',
@@ -30,22 +31,28 @@ const buttonStatus = {
   removeFavoriteContacts: {
     className: 'card__button card__button-remove-favorite-contacts',
     src: crossIcon,
-    alt: 'Remove from favorites',
-    ariaLabel: 'Remove from favorites',
+    alt: 'Remove from favorites icon',
+    ariaLabel: 'Remove from favorites in contacts list',
     action: removeFromFavorites,
     text: '',
   },
   deleteContact: {
     className: 'card__button card__button-delete',
     src: trashIcon,
-    alt: 'Delete contact',
+    alt: 'Delete contact icon',
     ariaLabel: 'Delete contact',
     action: deleteContact,
     text: '',
   },
+  editContact: {
+    className: 'card__button card__button-favorite',
+    src: editIcon,
+    alt: 'Edit contact icon',
+    ariaLabel: 'Edit contact',
+    action: null,
+    text: '',
+  },
 };
-
-// TODO: change data access from redux (not props)
 
 function CardButton({ type, contactId }) {
   const dispatch = useDispatch();
@@ -59,11 +66,21 @@ function CardButton({ type, contactId }) {
     }
   };
 
+  const handleEditClick = () => {
+    
+  };
+
   return (
     <button
       className={buttonConfig.className}
       aria-label={buttonConfig.ariaLabel}
-      onClick={handleOnClick}
+      onClick={
+        buttonConfig.action
+          ? handleOnClick
+          : type === 'editContact'
+            ? handleEditClick
+            : null
+      }
     >
       <img
         src={buttonConfig.src}
