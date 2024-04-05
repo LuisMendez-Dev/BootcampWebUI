@@ -15,22 +15,12 @@ function ModalNewContact({ openModal, closeModal }) {
     isFavorite: false,
   });
   const [errors, setErrors] = useState({});
-  const [isSubmited, setIsSubmited] = useState(false);
 
   useEffect(() => {
     if (openModal) {
       modalRef.current?.focus();
     }
   }, [openModal]);
-
-  useEffect(() => {
-    if (isSubmited) {
-      const timer = setTimeout(() => {
-        setIsSubmited(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [isSubmited, closeModal]);
 
   if (!openModal) {
     return null;
@@ -70,8 +60,8 @@ function ModalNewContact({ openModal, closeModal }) {
         } else {
           dispatch(addToContacts({ first_name, last_name, email, isFavorite }));
         }
-        setIsSubmited(true);
         resetForm();
+        closeModal();
       } catch (error) {
         throw new Error(error);
       }

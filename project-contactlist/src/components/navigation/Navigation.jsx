@@ -10,12 +10,16 @@ import ModalNewContact from '../modal/ModalNewContact';
 import { NAV_BAR_ROUTES } from '../../utils/constants';
 import { darkModeApp, lightModeApp } from '../../utils/lightModeStyles';
 import './navigation.css';
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+} from '../../services/localStorageService';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [modalBehavior, setModalBehavior] = useState(false);
   const [lightMode, setLightMode] = useState(
-    JSON.parse(localStorage.getItem('mode')) || 'light'
+    getFromLocalStorage('mode') || 'light'
   );
 
   const darkModeStyles = () => {
@@ -28,7 +32,7 @@ function Navigation() {
 
   const toggleMode = () => {
     if (lightMode === 'light') {
-      localStorage.setItem('mode', JSON.stringify('dark'));
+      addToLocalStorage('mode', JSON.stringify('dark'));
       setLightMode('dark');
       darkModeStyles();
     } else {

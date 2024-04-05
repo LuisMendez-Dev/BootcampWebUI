@@ -3,8 +3,8 @@ import './favoritesPage.css';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
 import Divisor from '../../components/divisor/Divisor';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import Pagination from '../../components/pagination/Pagination';
 import { ITEMS_PER_PAGE } from '../../utils/constants';
 import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
@@ -13,17 +13,12 @@ const FavoritesPage = () => {
   const [currentItems, setCurrentItems] = useState([]);
   const favorites = useSelector((state) => state.contacts.favorites);
 
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get('page')) || 1;
 
   const paginate = (pageNumber) => {
     setSearchParams({ page: pageNumber });
   };
-
-  useEffect(() => {
-    navigate(`?page=${currentPage}`);
-  }, [currentPage, navigate]);
 
   const handlePageChange = (newItems) => {
     setCurrentItems(newItems);

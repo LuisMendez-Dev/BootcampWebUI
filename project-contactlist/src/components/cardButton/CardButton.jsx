@@ -18,7 +18,6 @@ const buttonStatus = {
     alt: 'Add to favorites icon',
     ariaLabel: 'Add to favorites',
     action: addToFavorites,
-    text: '',
   },
   removeFavorite: {
     className: 'card__button card__button-remove',
@@ -34,7 +33,6 @@ const buttonStatus = {
     alt: 'Remove from favorites icon',
     ariaLabel: 'Remove from favorites in contacts list',
     action: removeFromFavorites,
-    text: '',
   },
   deleteContact: {
     className: 'card__button card__button-delete',
@@ -42,7 +40,6 @@ const buttonStatus = {
     alt: 'Delete contact icon',
     ariaLabel: 'Delete contact',
     action: deleteContact,
-    text: '',
   },
   editContact: {
     className: 'card__button card__button-favorite',
@@ -50,7 +47,6 @@ const buttonStatus = {
     alt: 'Edit contact icon',
     ariaLabel: 'Edit contact',
     action: null,
-    text: '',
   },
 };
 
@@ -85,7 +81,9 @@ function CardButton({ type, contactId }) {
         alt={buttonConfig.alt}
         className="card__button-icon"
       />
-      {buttonConfig.text}
+      {buttonConfig.text && (
+        <span className="card__button-text">{buttonConfig.text}</span>
+      )}
     </button>
   );
 }

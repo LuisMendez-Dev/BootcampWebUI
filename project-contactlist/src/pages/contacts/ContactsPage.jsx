@@ -3,7 +3,7 @@ import { allContactsSelector } from '../../redux/contactsSlice.js';
 import Divisor from '../../components/divisor/Divisor';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Pagination from '../../components/pagination/Pagination.jsx';
 import { useSearchParams } from 'react-router-dom';
 import { ITEMS_PER_PAGE } from '../../utils/constants.js';

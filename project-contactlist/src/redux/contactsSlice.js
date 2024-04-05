@@ -1,6 +1,5 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { RANDOM_PROFILE_PHOTO } from '../utils/constants';
-import uniqueIdGenerator from '../utils/uniqueIdGenerator';
 import { addToLocalStorage } from '../services/localStorageService';
 import { nanoid } from 'nanoid';
 
@@ -20,9 +19,9 @@ export const contactsSlice = createSlice({
 
     addToContacts: (state, action) => {
       const newContact = {
+        ...action.payload,
         id: nanoid(),
         avatar: RANDOM_PROFILE_PHOTO,
-        ...action.payload,
       };
 
       state.contacts.push(newContact);
@@ -66,7 +65,7 @@ export const contactsSlice = createSlice({
 
     addToFavoritesModal: (state, action) => {
       const contactToAdd = {
-        id: uniqueIdGenerator(),
+        id: nanoid(),
         avatar: RANDOM_PROFILE_PHOTO,
         ...action.payload,
         isFavorite: true,

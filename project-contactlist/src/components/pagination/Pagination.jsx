@@ -32,6 +32,10 @@ const Pagination = ({
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
+    navigate(`?page=${currentPage}`);
+  }, [currentPage, navigate]);
+
+  useEffect(() => {
     onPageChange(currentItems);
   }, [currentPage, data]);
 
