@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/adobe-clean');
+
+:root {
+  --globant-green: #c1d72f;
+  --globant-red: #cf6679;
+  --general-gap: 4rem;
+  --primary: #ffffff;
+  --dark-primary: #231f20;
+  --dark-secondary: #323232;
+  --card-shadow: #cacaca;
+  --card-background: var(--primary);
+  --card-footer: #cacaca;
+  --message-background: #f1f1f1;
+  --color-email: #737373;
+  --color-pagination-text: var(--dark-primary);
+}
+
+.dark-mode {
+  --primary: #231f20;
+  --dark-primary: #000000;
+  --dark-secondary: #ffffff;
+  --card-shadow: none;
+  --card-background: #2c2c2c;
+  --card-footer: #424242;
+  --message-background: #424242;
+  --color-email: #d0d0d0;
+  --color-pagination-text: #d0d0d0;
+}

@@ -10,9 +10,9 @@ import {
   getFromLocalStorage,
 } from './services/localStorageService';
 import MainLayout from './layouts/MainLayout';
-import { darkModeApp, lightModeApp } from './utils/lightModeStyles';
 import EmptyMessage from './components/emptyDataMessage/EmptyMessage';
 import { nanoid } from 'nanoid';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,14 +43,13 @@ function App() {
   }, [contacts.length, loading, error, fetchedData]);
 
   useEffect(() => {
-    if (mode === 'dark') {
-      darkModeApp();
-    } else {
-      lightModeApp();
-    }
+    const rootElement = document.documentElement;
+    rootElement.classList.toggle('dark-mode', mode === 'dark');
+    rootElement.classList.toggle('light-mode', mode !== 'dark');
+
     const savedMode = getFromLocalStorage('mode');
     if (savedMode !== mode) {
-      addToLocalStorage('mode', JSON.stringify(mode));
+      addToLocalStorage('mode', mode);
     }
   }, [mode]);
 

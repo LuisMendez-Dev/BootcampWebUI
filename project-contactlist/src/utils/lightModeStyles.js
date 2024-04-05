@@ -1,38 +1,31 @@
-const darkModeApp = () => {
-  document.documentElement.style.setProperty('--primary', '#231f20');
-  document.documentElement.style.setProperty('--dark-primary', '#000000');
-  document.documentElement.style.setProperty('--dark-secondary', '#ffffff');
-  document.documentElement.style.setProperty('--card-shadow', 'none');
-  document.documentElement.style.setProperty('--card-background', '#2c2c2c');
-  document.documentElement.style.setProperty('--card-footer', '#424242');
-  document.documentElement.style.setProperty('--message-background', '#424242');
-  document.documentElement.style.setProperty('--color-email', '#d0d0d0');
-  document.documentElement.style.setProperty(
-    '--color-pagination-text',
-    '#d0d0d0'
-  );
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+} from '../services/localStorageService';
+
+const toggleDarkMode = (isDarkMode) => {
+  const rootElement = document.documentElement;
+  if (isDarkMode) {
+    rootElement.classList.add('dark-mode');
+    rootElement.classList.remove('light-mode');
+    addToLocalStorage('mode', 'dark');
+  } else {
+    rootElement.classList.add('light-mode');
+    rootElement.classList.remove('dark-mode');
+    addToLocalStorage('mode', 'light');
+  }
 };
 
-const lightModeApp = () => {
-  document.documentElement.style.setProperty('--primary', '#ffffff');
-  document.documentElement.style.setProperty('--dark-primary', '#231f20');
-  document.documentElement.style.setProperty('--dark-secondary', '#323232');
-  document.documentElement.style.setProperty('--card-shadow', '#cacaca');
-  document.documentElement.style.setProperty(
-    '--card-background',
-    'var(--primary)'
-  );
-  document.documentElement.style.setProperty('--card-footer', '#cacaca');
-  document.documentElement.style.setProperty('--message-background', '#f1f1f1');
-  document.documentElement.style.setProperty('--color-email', '#737373');
-  document.documentElement.style.setProperty(
-    '--remove-icons-red',
-    'var(--globant-red)'
-  );
-  document.documentElement.style.setProperty(
-    '--color-pagination-text',
-    'var(--dark-primary)'
-  );
+const applyInitialColorMode = () => {
+  const userPreference = getFromLocalStorage('mode');
+  const systemPreference = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+  ).matches;
+  const isDarkMode =
+    userPreference === 'dark' || (userPreference === null && systemPreference);
+  toggleDarkMode(isDarkMode);
 };
 
-export { darkModeApp, lightModeApp };
+applyInitialColorMode();
+
+export { toggleDarkMode };

@@ -1,16 +1,11 @@
-:root {
-  --color-primary: #c1d72f;
-  --color-secondary: #dbdbdb;
-}
-
-.error-page {
+.error__page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.error-page__content {
+.error__page--content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,21 +13,21 @@
   gap: 2rem;
 }
 
-.error-page__title {
+.error__page--title {
   font-size: clamp(5rem, 30vw, 20rem);
-  color: var(--color-primary);
+  color: var(--globant-green);
   text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
   animation: jump 2s infinite;
 }
 
-.error-page__text {
+.error__page--text {
   font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #000;
+  color: var(--secondary);
 }
 
-.error-page__button {
+.error__page--button {
   font-size: clamp(0.5rem, 3vw, 1.5rem);
   display: flex;
   justify-content: center;
@@ -43,11 +38,11 @@
   border-radius: 20px;
   cursor: pointer;
   padding: 1rem 2rem;
-  background-color: var(--color-primary);
+  background-color: var(--globant-green);
   transition: all 0.3s ease;
 }
 
-.error-page__button:hover {
+.error__page--button:hover {
   scale: 0.9;
 }
 

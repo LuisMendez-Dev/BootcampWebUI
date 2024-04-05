@@ -3,13 +3,15 @@ import heartIcon from '../../assets/icons/heart.svg';
 import crossIcon from '../../assets/icons/cross.svg';
 import trashIcon from '../../assets/icons/trash-can.svg';
 import editIcon from '../../assets/icons/edit.svg';
-import './cadButton.css';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   addToFavorites,
   deleteContact,
   removeFromFavorites,
 } from '../../redux/contactsSlice';
+import ModalConfirmation from '../modalConfirmation/ModalConfirmation';
+import './cadButton.css';
 
 const buttonStatus = {
   addFavorite: {
@@ -52,39 +54,58 @@ const buttonStatus = {
 
 function CardButton({ type, contactId }) {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
   const buttonConfig = buttonStatus[type] || {};
 
   const handleOnClick = () => {
-    if (buttonConfig.action) {
+    if (
+      type === 'deleteContact' ||
+      type === 'removeFavorite' ||
+      type === 'removeFavoriteContacts'
+    ) {
+      setShowModal(true);
+    } else if (buttonConfig.action) {
       dispatch(buttonConfig.action(contactId));
     } else {
       console.error('No action defined for button type:', type);
     }
   };
 
-  const handleEditClick = () => {};
+  const handleConfirm = () => {
+    if (buttonConfig.action) {
+      dispatch(buttonConfig.action(contactId));
+    }
+    setShowModal(false);
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
+  };
 
   return (
-    <button
-      className={buttonConfig.className}
-      aria-label={buttonConfig.ariaLabel}
-      onClick={
-        buttonConfig.action
-          ? handleOnClick
-          : type === 'editContact'
-            ? handleEditClick
-            : null
-      }
-    >
-      <img
-        src={buttonConfig.src}
-        alt={buttonConfig.alt}
-        className="card__button-icon"
-      />
-      {buttonConfig.text && (
-        <span className="card__button-text">{buttonConfig.text}</span>
+    <>
+      <button
+        className={buttonConfig.className}
+        aria-label={buttonConfig.ariaLabel}
+        onClick={handleOnClick}
+      >
+        <img
+          src={buttonConfig.src}
+          alt={buttonConfig.alt}
+          className="card__button-icon"
+        />
+        {buttonConfig.text && (
+          <span className="card__button-text">{buttonConfig.text}</span>
+        )}
+      </button>
+      {showModal && (
+        <ModalConfirmation
+          type={type === 'deleteContact' ? 'delete' : 'remove'}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
       )}
-    </button>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contactsSlice';
 import modeReducer from './modeSlice';
+import { getFromLocalStorage } from '../services/localStorageService';
 
 const preloadedState = {
   contacts: {
@@ -8,7 +9,7 @@ const preloadedState = {
     favorites: JSON.parse(localStorage.getItem('favorites')) || [],
   },
   mode: {
-    mode: JSON.parse(localStorage.getItem('mode')) || 'light',
+    mode: getFromLocalStorage('mode') || 'light',
   },
 };
 

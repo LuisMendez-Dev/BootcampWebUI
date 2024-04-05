@@ -1,12 +1,11 @@
-// OverviewPage.js
 import { useSelector } from 'react-redux';
 import Divisor from '../../components/divisor/Divisor';
 import CardList from '../../components/cardlist/CardList';
 import Card from '../../components/card/Card';
 import shuffleWithSlice from '../../utils/shuffleData';
-import './overviewPage.css';
 import { MAX_CARDS_CONTACTS, MAX_CARDS_FAVORITES } from '../../utils/constants';
 import EmptyMessage from '../../components/emptyDataMessage/EmptyMessage';
+import './overviewPage.css';
 
 const OverviewPage = () => {
   const favorites = useSelector((state) => state.contacts.favorites);

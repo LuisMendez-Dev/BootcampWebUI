@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import menuDark from '../../assets/icons/menu-dark.svg';
 import menuLight from '../../assets/icons/menu-light.svg';
@@ -8,7 +8,6 @@ import darkModeIcon from '../../assets/icons/mode-dark.svg';
 import lightModeIcon from '../../assets/icons/mode-light.svg';
 import ModalNewContact from '../modal/ModalNewContact';
 import { NAV_BAR_ROUTES } from '../../utils/constants';
-import { darkModeApp, lightModeApp } from '../../utils/lightModeStyles';
 import './navigation.css';
 import {
   addToLocalStorage,
@@ -22,24 +21,16 @@ function Navigation() {
     getFromLocalStorage('mode') || 'light'
   );
 
-  const darkModeStyles = () => {
-    darkModeApp();
-  };
-
-  const lightModeStyles = () => {
-    lightModeApp();
-  };
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      'dark-mode',
+      lightMode === 'dark'
+    );
+    addToLocalStorage('mode', lightMode);
+  }, [lightMode]);
 
   const toggleMode = () => {
-    if (lightMode === 'light') {
-      addToLocalStorage('mode', JSON.stringify('dark'));
-      setLightMode('dark');
-      darkModeStyles();
-    } else {
-      localStorage.setItem('mode', JSON.stringify('light'));
-      setLightMode('light');
-      lightModeStyles();
-    }
+    setLightMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
   const toggleModal = () => {
